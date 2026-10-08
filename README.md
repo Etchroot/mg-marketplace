@@ -7,7 +7,7 @@
 | 이름 | 버전 | 설명 |
 | --- | --- | --- |
 | [music-director](plugins/music-director/README.md) | 0.1.0 | 레퍼런스 분석, 곡 기획, 가사 작성·수정, Suno에 붙여 넣을 프롬프트 구성 |
-| [application-coach](plugins/application-coach/README.md) | 0.1.0 | 실제 채용 문항 제안, 경험 인터뷰, 자소서 답변과 경험 기록 저장 |
+| [application-coach](plugins/application-coach/README.md) | 0.1.1 | 실제 채용 문항 제안, 경험 인터뷰, 자소서 답변과 경험 기록 저장 |
 
 music-director는 장르·보컬·언어·곡 구조를 곡별로 선택합니다. 특정 곡에서 사용한 설정을 모든 곡의 기본값으로 고정하지 않습니다. Suno에 직접 접속하거나 음악을 생성하지 않으며, API 키나 Suno 계정 연결이 필요하지 않습니다.
 
@@ -83,3 +83,5 @@ JSON과 내부 경로, 프롬프트 글자 수 도구를 확인할 수 있습니
 ## 자소서 플러그인
 
 application-coach는 최근 2년의 검증된 자소서 질문 최대 50개를 저장하고, 대화로 경험을 끌어내 답변과 경험 기록을 남깁니다. 개인 데이터는 공개 저장소 바깥에 보관합니다. 자세한 사용법과 도구의 범위는 [플러그인 README](plugins/application-coach/README.md)를 참고하세요.
+
+공개 요청된 자소서와 경험 기록: [잔향·GIDDA 자료 모음](portfolio/application-essays/README.md). 원본과 자소서 본문을 보존하고 다섯 항목의 경험 기록을 별도로 정리했습니다.

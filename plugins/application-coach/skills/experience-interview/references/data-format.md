@@ -74,7 +74,7 @@ scope의 기존 유효 pending/in_progress가 남아 있으면 새 import를 거
 
 answer 파일은 코드 펜스나 해설 없는 **실제 본문**이다. UTF-8 BOM만 제거하며 공백·개행은 보존해 계산한다. 마지막 개행도 포함되므로 최종 저장할 정확한 본문을 입력한다.
 
-experiences JSON은 배열이다. 각각 situation, role, actions, result, learning, evidence가 필요하며 reason, tags, period, unknowns를 추가할 수 있다. evidence에는 사용자의 진술이나 해당 개인 인터뷰 파일의 근거 위치를 기록한다. 기존 카드는 catalog의 실제 `e-...` ID를 전달하고, 새 카드는 id를 생략한다. 사용자 근거가 없는 가상의 성과를 채우지 않는다. 동기 중심 문항 등 사건 카드가 불필요하면 빈 배열을 쓸 수 있다.
+experiences JSON은 배열이다. 각각 situation, role, actions, result, learning, evidence가 필요하며 judgment(문제에 대한 판단), values(경험으로 드러난 가치관), reason, tags, period, unknowns를 추가할 수 있다. 경험 구체화 시 judgment와 values를 별도로 보존한다. learning은 배운 점으로 따로 기록하며 가치관과 자동으로 같은 내용이라고 가정하지 않는다. evidence에는 사용자의 진술이나 해당 개인 인터뷰 파일의 근거 위치를 기록한다. 기존 카드는 catalog의 실제 `e-...` ID를 전달하고, 새 카드는 id를 생략한다. 사용자 근거가 없는 가상의 성과를 채우지 않는다. 동기 중심 문항 등 사건 카드가 불필요하면 빈 배열을 쓸 수 있다.
 
 `--draft`는 글자 수 초과나 부족한 사실을 표시한 초안을 저장하고 in_progress로 유지한다. 완성본은 확인된 제한을 넘으면 저장을 거부하며 성공 시 completed가 된다. 직접 status completed로 바꿀 수 없다.
 

@@ -1,7 +1,9 @@
 {
   "name": "application-coach",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "실제 채용 질문을 제안하고 경험 인터뷰로 자소서 답변과 경험 기록을 저장",
-  "author": { "name": "myeonggeun" },
+  "author": {
+    "name": "myeonggeun"
+  },
   "repository": "https://github.com/Etchroot/mg-marketplace"
 }
