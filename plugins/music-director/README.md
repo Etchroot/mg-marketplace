@@ -1,6 +1,6 @@
 # music-director
 
-레퍼런스 곡의 조사·분석에서 곡 기획, 가사 디렉팅, 수정 이력과 Suno에 붙여 넣을 프롬프트까지 만드는 스킬 전용 플러그인입니다.
+레퍼런스 곡의 조사·분석에서 곡 기획, 가사 디렉팅, 수정 이력, Suno에 붙여 넣을 프롬프트와 작품 정리 Markdown까지 만드는 스킬 전용 플러그인입니다.
 
 ## 범위
 
@@ -10,6 +10,7 @@
 - 분석 후 반주 우선 / 가사 우선 선택 질문
 - 곡별 설정을 바탕으로 새 가사와 가사·스타일·제외 프롬프트 작성
 - 피드백에 따른 수정 및 확정본 기록
+- 기존 프로젝트를 읽어 보컬곡·연주곡·출품용 작품 정리 파일 작성 및 갱신
 
 **Suno 직접 실행 기능은 없습니다.** API 키, 계정 연결, MCP 서버, 생성·결제·샘플 업로드·공개 게시를 포함하지 않습니다. 만든 텍스트를 사용자가 Suno에 붙여 넣고 결과를 돌려주는 방식입니다.
 
@@ -43,6 +44,9 @@ music-director/
 ├── .codex-plugin/plugin.json
 ├── README.md
 ├── examples/usage.md
+├── skills/song-summary/
+│   ├── SKILL.md
+│   └── references/summary-template.md
 └── skills/lyric-direction/
     ├── SKILL.md
     ├── references/
@@ -64,7 +68,7 @@ root plugin.json은 Agent Plugins 형식입니다. .codex-plugin/plugin.json은 
 - song-brief.md: 선택 설정·감정선·곡 구조
 - 버전별 가사/스타일/제외 프롬프트
 - revision-log.md: 사용자 관찰 → 가설 → 변경 → 결과 → 적용 범위
-- 작품 정리: 확정 제목·짧은 소개·장르·가사·현재 파일 위치
+- 작품 정리: [song-summary](skills/song-summary/SKILL.md)로 현재 확정 정보·짧은 소개·음악 방향·채택 파일을 기록. 보컬곡에는 가사·가창 방향, 연주곡에는 악기 전개, 출품용에는 제출 규격과 AI 제작 정보를 선택적으로 추가
 
 사용자가 요청한 범위에 맞춰 파일 수를 줄일 수 있습니다. 분석 결과는 음악적 해석이며, 오디오 청취가 불가능하면 그 한계를 파일에 명시합니다.
 
@@ -96,3 +100,21 @@ python skills/lyric-direction/scripts/check_prompts.py --style /path/to/style.tx
 - 호스트 설치·마켓플레이스 등록·자동 스킬 선택·Suno 생성: 미실행
 
 이 검증은 파일 형식과 검사 도구의 동작을 확인한 것이며, 실제 음악 생성의 품질이나 모든 호스트에서의 설치 성공을 보증하지 않습니다.
+## 작품 정리 스킬 — song-summary
+
+> music-director의 song-summary로 이 프로젝트의 작품 정리 파일을 만들어 줘. 기존 파일이 있으면 최신 확정본으로 수정해 줘.
+
+> 가사는 붙이지 않고 연주곡으로 확정했어. 작품명은 경계의 너머야. 이전 보컬 초안은 최종본에서 빼고, 음원과 커버 파일 위치도 정리해 줘.
+
+기본 양식은 작품 정보 → 짧은 소개 → 음악 방향·구조 → 제작 파일입니다. 가사·가창, 레퍼런스, 커버, 출품 정보는 해당하는 경우에만 붙입니다. 알려지지 않은 정보는 임의 확정하지 않습니다.
+기획 BPM·목표 길이와 실측값을 구분하며, 존재하는 파일을 채택된 최종본으로 자동 간주하지 않습니다. 정리만 요청하면 음원 생성·변환·커버 생성·제출을 수행하지 않습니다.
+
+양식과 기존 문서에서 추출한 기준: [summary-template.md](skills/song-summary/references/summary-template.md)
+
+### 작품 정리 스킬 검증 — 2026-10-09
+
+- lyric-direction 및 song-summary의 공식 quick_validate.py: 통과
+- 두 manifest의 JSON·이름·버전(0.2.0)·스킬 경로: 확인
+- Markdown 내부 링크 12개: 파일 존재 및 패키지 내부 경로 확인
+- 보컬곡 갱신·연주곡 전환·공모전·폴더 이동 예시 4개 추가
+- 호스트 설치·자동 스킬 선택 및 실제 요청 실행 검증: 미실행
