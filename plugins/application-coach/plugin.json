@@ -1,0 +1,7 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "application-coach",
+  "version": "0.1.0",
+  "description": "실제 채용 문항을 저장하고 대화로 경험을 발굴해 자소서 답변과 경험 기록을 만드는 플러그인",
+  "author": { "name": "myeonggeun" }
+}

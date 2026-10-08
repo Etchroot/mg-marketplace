@@ -1,12 +1,32 @@
 {
   "name": "mg-marketplace",
-  "interface": { "displayName": "MG Marketplace" },
+  "interface": {
+    "displayName": "MG Marketplace"
+  },
   "plugins": [
     {
       "name": "music-director",
-      "source": { "source": "local", "path": "./plugins/music-director" },
-      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "source": {
+        "source": "local",
+        "path": "./plugins/music-director"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
       "category": "Creativity"
+    },
+    {
+      "name": "application-coach",
+      "source": {
+        "source": "local",
+        "path": "./plugins/application-coach"
+      },
+      "policy": {
+        "authentication": "ON_INSTALL",
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
     }
   ]
 }

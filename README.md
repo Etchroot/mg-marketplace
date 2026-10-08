@@ -7,6 +7,7 @@
 | 이름 | 버전 | 설명 |
 | --- | --- | --- |
 | [music-director](plugins/music-director/README.md) | 0.1.0 | 레퍼런스 분석, 곡 기획, 가사 작성·수정, Suno에 붙여 넣을 프롬프트 구성 |
+| [application-coach](plugins/application-coach/README.md) | 0.1.0 | 실제 채용 문항 제안, 경험 인터뷰, 자소서 답변과 경험 기록 저장 |
 
 music-director는 장르·보컬·언어·곡 구조를 곡별로 선택합니다. 특정 곡에서 사용한 설정을 모든 곡의 기본값으로 고정하지 않습니다. Suno에 직접 접속하거나 음악을 생성하지 않으며, API 키나 Suno 계정 연결이 필요하지 않습니다.
 
@@ -53,6 +54,7 @@ mg-marketplace/
 ├── .claude-plugin/marketplace.json         # Claude Code 카탈로그
 ├── README.md
 └── plugins/
+    ├── application-coach/                 # 경험 인터뷰·자소서 저장
     └── music-director/
         ├── plugin.json
         ├── .codex-plugin/plugin.json
@@ -77,3 +79,7 @@ claude plugin validate ./plugins/music-director
 ```
 
 JSON과 내부 경로, 프롬프트 글자 수 도구를 확인할 수 있습니다. 파일 검증과 실제 호스트 설치·스킬 실행은 별개이며, Suno 생성 결과의 품질을 보장하지 않습니다. 공개 저장소 업로드만으로 공식 플러그인 디렉터리에 등재되는 것은 아닙니다.
+
+## 자소서 플러그인
+
+application-coach는 최근 2년의 검증된 자소서 질문 최대 50개를 저장하고, 대화로 경험을 끌어내 답변과 경험 기록을 남깁니다. 개인 데이터는 공개 저장소 바깥에 보관합니다. 자세한 사용법과 도구의 범위는 [플러그인 README](plugins/application-coach/README.md)를 참고하세요.

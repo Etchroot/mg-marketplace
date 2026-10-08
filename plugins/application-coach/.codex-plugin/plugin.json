@@ -1,0 +1,8 @@
+{
+  "name": "application-coach",
+  "version": "0.1.0",
+  "description": "질문 50개 배치·경험 인터뷰·자소서 및 경험 기록 저장",
+  "author": { "name": "myeonggeun" },
+  "skills": "./skills/",
+  "interface": { "displayName": "Application Coach", "shortDescription": "대화로 경험을 발견하고 자소서 답변을 완성" }
+}
