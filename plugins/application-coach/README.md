@@ -59,3 +59,11 @@ claude plugin validate .
 - skill-creator quick_validate, Claude Code 플러그인·마켓플레이스 validate 통과.
 - manifest JSON과 Markdown 내부 링크 확인.
 - 실제 채용 사이트 자료 수집과 호스트 설치 후 인터뷰는 미실행.
+
+## 경험 구체화 스킬 — 0.1.1
+
+[experience-to-answer](skills/experience-to-answer/SKILL.md)는 상황·문제에 대한 판단·행동·결과·경험으로 드러난 가치관을 연결합니다. 다섯 항목을 근거 있게 작성할 수 있으면 질문을 멈추고 답변으로 전환합니다. 기존 자소서를 가져와 정리할 때는 본문을 보존하고 경험 자료만 별도로 구성합니다.
+
+Claude Code 호출: /application-coach:experience-to-answer. 자연어로 "이 경험을 다섯 항목으로 구체화해서 답변으로 정리해 줘"라고 요청할 수도 있습니다.
+
+사용자가 공개를 요청한 [잔향·GIDDA 자소서 사례](../../portfolio/application-essays/README.md)를 함께 보관했습니다. 이 요청은 일반 사용자의 개인 데이터 비공개 기본값을 바꾸지 않습니다.

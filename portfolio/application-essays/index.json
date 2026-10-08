@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "janhyang",
+      "title": "잔향 프로젝트 — 가장 어려운 문제를 해결한 경험",
+      "answer": "cases/janhyang/answer.md",
+      "experience": "cases/janhyang/experience.md",
+      "metadata": "cases/janhyang/metadata.json",
+      "source": "sources/janhyang.md"
+    },
+    {
+      "id": "gidda",
+      "title": "GIDDA 프로젝트 — 끝까지 몰입한 경험",
+      "answer": "cases/gidda/answer.md",
+      "experience": "cases/gidda/experience.md",
+      "metadata": "cases/gidda/metadata.json",
+      "source": "sources/gidda.md"
+    }
+  ]
+}

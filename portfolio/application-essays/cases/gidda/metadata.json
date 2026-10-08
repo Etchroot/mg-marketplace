@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "id": "gidda",
+  "title": "GIDDA 프로젝트 — 끝까지 몰입한 경험",
+  "imported_at": "2026-10-08",
+  "publication_authorization": "사용자가 이 두 문서의 정리와 공개 GitHub 업로드를 명시적으로 요청함",
+  "source_type": "user_provided_notion_export",
+  "source_file": "../../sources/gidda.md",
+  "source_sha256": "15fa4672f89a1ac6afb7e93adba1d23601c9b03d6a3d40e8bb39af74a59835c1",
+  "answer_file": "answer.md",
+  "answer_sha256": "9bfdc5ff2f932bf097ab1df8886acc2dd07f6fa550fcc2f7871f7207f1c72188",
+  "answer_preservation": "문구·문장 순서·문단·강조 보존; 인용 블록 표기와 줄바꿈 형식만 정리",
+  "posting_context_as_provided": "2025년 9월 모집 / 2026 카카오그룹 신입크루 공채 / 카카오 Tech 직군(Tech_Tech 공통)",
+  "posting_date": null,
+  "source_url": null,
+  "verification_status": "user_provided_not_independently_verified",
+  "eligible_for_verified_question_batch": false,
+  "original_question_as_provided": "어떤 일을 하면서 ‘이 정도면 충분하다’는 생각 대신, 더 완성도를 높이고 싶어 끝까지 몰입했던 경험이 있나요? 그때 어떤 점이 가장 도전적이었고, 어떻게 극복하셨는지 적어주세요.",
+  "practice_question_as_provided": "적당히 마무리할 수도 있었지만, 더 나은 결과를 만들기 위해 끝까지 몰입했던 경험이 있는가?",
+  "length_limit_as_provided": 1000,
+  "length_limit_verified": false,
+  "counts": {
+    "codepoints_including_whitespace": 694,
+    "codepoints_excluding_whitespace": 522,
+    "utf16_including_whitespace": 694
+  },
+  "counting_note": "Markdown 강조 기호를 제외한 본문, 문단 사이 개행 포함, 파일 끝 저장용 개행 제외. 실제 지원 UI 계산법은 미확인.",
+  "experience_basis": "제공된 완성 문서에서 추출. 원 인터뷰 대화 및 실제 성과를 독립적으로 검증하지 않음."
+}
