@@ -1,6 +1,6 @@
 {
   "name": "music-director",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "레퍼런스 분석·곡 기획·가사 수정·Suno 프롬프트와 작품 정리 Markdown을 만드는 스킬 전용 플러그인. Suno를 직접 실행하지 않습니다.",
   "author": {
     "name": "myeonggeun"

@@ -6,7 +6,7 @@
 
 | 이름 | 버전 | 설명 |
 | --- | --- | --- |
-| [music-director](plugins/music-director/README.md) | 0.2.0 | 레퍼런스 분석, 곡 기획·가사·Suno 프롬프트 구성, 작품 정리 |
+| [music-director](plugins/music-director/README.md) | 0.2.1 | 레퍼런스 분석, 곡 기획·가사·Suno 프롬프트 구성, 작품 정리 |
 | [application-coach](plugins/application-coach/README.md) | 0.1.1 | 실제 채용 문항 제안, 경험 인터뷰, 자소서 답변과 경험 기록 저장 |
 
 music-director는 장르·보컬·언어·곡 구조를 곡별로 선택합니다. 특정 곡에서 사용한 설정을 모든 곡의 기본값으로 고정하지 않습니다. Suno에 직접 접속하거나 음악을 생성하지 않으며, API 키나 Suno 계정 연결이 필요하지 않습니다.
