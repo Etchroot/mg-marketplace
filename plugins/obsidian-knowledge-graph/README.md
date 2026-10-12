@@ -1,5 +1,22 @@
 # Obsidian Knowledge Graph
 
+## 0.1.2: 옵시디언에서 읽기 쉬운 정리
+
+원본과 요약은 제목 기반 파일명을 사용합니다. UUID·revision·원본 해시는 내부 메타데이터로 유지하며, 같은 제목은 짧은 구분자로 충돌을 피합니다. 모든 `essay` 요약은 `30_Topics/자기소개서.md` 허브에 직접 연결되고 다음 정리 때 목록이 자동으로 확장됩니다. 개별 주제 연결은 유지합니다.
+
+정리 commit 전체가 성공한 뒤 비어 있는 Inbox revision·기록 폴더만 제거합니다. `00_Inbox`와 미분류 revision, 다른 메모가 남은 폴더는 보존합니다. 기본 그래프는 원본·시스템 문서와 고립 노드를 제외하여 요약·허브·주제를 중심으로 표시합니다.
+
+기존 자료의 명시적 마이그레이션:
+
+```sh
+node dist/cli.cjs migrate-readable --config /absolute/path/config.json
+node dist/cli.cjs migrate-readable --config /absolute/path/config.json --apply
+```
+
+첫 명령은 preview만 만들고 두 번째 명령은 최신 상태를 다시 확인하여 적용합니다. 원본 바이트·ID·수동 설명·코드 예시를 보존하고 기존 요약·주제·`40_Collections` 목차의 실제 링크와 카탈로그를 갱신합니다. 자동 실행하지 않습니다. 적용 결과의 operation_id로 Git sync preview/commit을 별도로 실행합니다. 지원 폴더 밖의 수동 노트에 수정할 링크가 있으면 적용 전에 POLICY_BLOCKED로 멈춥니다. 해당 노트를 `40_Collections`로 옮긴 뒤 다시 요청하세요.
+
+Marketplace 패키지는 실행 번들과 함께 소스·합성 회귀 테스트를 포함합니다. 개인 Vault·기기 설정·자격 증명은 포함하지 않습니다.
+
 Codex 앱과 Claude Code에서 개인 Markdown Vault를 지식 저장소로 사용하는 **로컬 플러그인 0.1.1**입니다. Obsidian 실행은 필요하지 않습니다.
 
 ## 사용하는 방법
