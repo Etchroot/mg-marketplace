@@ -1,0 +1,13 @@
+import {mkdir,cp,writeFile,readFile} from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const get=k=>{const i=process.argv.indexOf(k);return i<0?undefined:process.argv[i+1];};
+const dir=get('--directory'),config=get('--config');
+if(!dir||!config||!path.isAbsolute(dir)||!path.isAbsolute(config))throw new Error('Absolute --directory and --config required');
+await mkdir(dir,{recursive:true});await cp(path.join(root,'dist/mcp.cjs'),path.join(dir,'mcp.cjs'));await cp(path.join(root,'dist/cli.cjs'),path.join(dir,'cli.cjs'));
+const server={command:process.execPath,args:[path.join(dir,'mcp.cjs'),'--config',config]};
+await writeFile(path.join(dir,'claude-mcp-registration.json'),JSON.stringify({mcpServers:{'obsidian-knowledge-graph':server}},null,2));
+await writeFile(path.join(dir,'codex-mcp-registration.toml'),'[mcp_servers.obsidian-knowledge-graph]\ncommand = '+JSON.stringify(server.command)+'\nargs = '+JSON.stringify(server.args)+'\n');
+await writeFile(path.join(dir,'bridge-version.json'),JSON.stringify({plugin_version:JSON.parse(await readFile(path.join(root,'plugin.json'),'utf8')).version,config_path:config},null,2));
+console.log('Bridge and registration snippets generated. Host settings have not been changed.');

@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "source_path": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string",
+      "maxLength": 52428800
+    },
+    "extracted_text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 52428800
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "essay",
+        "journal",
+        "company_research",
+        "work",
+        "project",
+        "experience",
+        "reference",
+        "other"
+      ]
+    },
+    "policy": {
+      "type": "object",
+      "properties": {
+        "agent_access": {
+          "type": "string",
+          "enum": [
+            "allowed",
+            "excluded"
+          ]
+        },
+        "github": {
+          "type": "boolean"
+        },
+        "notion": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "agent_access",
+        "github",
+        "notion"
+      ],
+      "additionalProperties": false
+    },
+    "record_id": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+    },
+    "document_status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "final",
+        "submitted"
+      ]
+    },
+    "occurred_on": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    }
+  },
+  "required": [
+    "title",
+    "type"
+  ],
+  "additionalProperties": false
+}
