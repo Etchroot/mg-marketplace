@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "number",
+      "const": 1
+    },
+    "record_id": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "record_type": {
+      "type": "string",
+      "enum": [
+        "essay",
+        "journal",
+        "company_research",
+        "work",
+        "project",
+        "experience",
+        "reference",
+        "other"
+      ]
+    },
+    "document_status": {
+      "default": "final",
+      "type": "string",
+      "enum": [
+        "draft",
+        "final",
+        "submitted"
+      ]
+    },
+    "occurred_on": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+    },
+    "latest_revision": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "policy": {
+      "type": "object",
+      "properties": {
+        "agent_access": {
+          "type": "string",
+          "enum": [
+            "allowed",
+            "excluded"
+          ]
+        },
+        "github": {
+          "type": "boolean"
+        },
+        "notion": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "agent_access",
+        "github",
+        "notion"
+      ],
+      "additionalProperties": false
+    },
+    "versions": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 9007199254740991
+          },
+          "raw_path": {
+            "type": "string"
+          },
+          "original_name": {
+            "type": "string"
+          },
+          "document_status": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "final",
+              "submitted"
+            ]
+          },
+          "occurred_on": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "byte_length": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "extraction": {
+            "type": "string",
+            "enum": [
+              "text",
+              "unsupported",
+              "provided"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "inbox",
+              "organized"
+            ]
+          },
+          "summary_id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "summary_path": {
+            "type": "string"
+          },
+          "extracted_path": {
+            "type": "string"
+          },
+          "extracted_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "extractor": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "revision",
+          "raw_path",
+          "original_name",
+          "sha256",
+          "byte_length",
+          "extraction",
+          "state"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "record_id",
+    "title",
+    "record_type",
+    "document_status",
+    "captured_at",
+    "latest_revision",
+    "policy",
+    "versions"
+  ],
+  "additionalProperties": false
+}

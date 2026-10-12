@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "obsidian-knowledge-graph", "version": "0.1.1",
+  "description": "명시적인 자료 등록·Inbox 정리·근거 요약·주제 링크·검색·Git 동기화를 제공하는 로컬 지식베이스 플러그인",
+  "author": {"name": "myeonggeun"},
+  "extensions": {"com.openai": {"interface": {
+    "displayName": "Obsidian Knowledge Graph", "shortDescription": "개인 자료 등록·요약·연결·검색",
+    "longDescription": "Codex와 Claude Code에서 로컬 Markdown Vault를 지식 저장소로 사용합니다. Node 24가 필요하며 Notion은 후속 기능입니다.",
+    "developerName": "myeonggeun", "category": "Productivity",
+    "defaultPrompt": "내 지식베이스를 설정하고 과거 자료를 찾아줘."
+  }}}
+}

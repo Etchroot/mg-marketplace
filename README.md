@@ -8,6 +8,7 @@
 | --- | --- | --- |
 | [music-director](plugins/music-director/README.md) | 0.2.1 | 레퍼런스 분석, 곡 기획·가사·Suno 프롬프트 구성, 작품 정리 |
 | [application-coach](plugins/application-coach/README.md) | 0.1.1 | 실제 채용 문항 제안, 경험 인터뷰, 자소서 답변과 경험 기록 저장 |
+| [obsidian-knowledge-graph](plugins/obsidian-knowledge-graph/README.md) | 0.1.1 | 명시적 자료 등록, Inbox 정리, 근거 요약·주제 연결·검색·Private Git 동기화 |
 
 music-director는 장르·보컬·언어·곡 구조를 곡별로 선택합니다. 특정 곡에서 사용한 설정을 모든 곡의 기본값으로 고정하지 않습니다. Suno에 직접 접속하거나 음악을 생성하지 않으며, API 키나 Suno 계정 연결이 필요하지 않습니다.
 
@@ -79,6 +80,12 @@ claude plugin validate ./plugins/music-director
 ```
 
 JSON과 내부 경로, 프롬프트 글자 수 도구를 확인할 수 있습니다. 파일 검증과 실제 호스트 설치·스킬 실행은 별개이며, Suno 생성 결과의 품질을 보장하지 않습니다. 공개 저장소 업로드만으로 공식 플러그인 디렉터리에 등재되는 것은 아닙니다.
+
+## 개인 지식베이스 플러그인
+
+obsidian-knowledge-graph는 Codex와 Claude Code의 로컬 MCP에서 Markdown Vault를 사용합니다. Node 24가 필요하고 Obsidian 앱은 실행하지 않아도 됩니다. 사용자가 작업 완료 자료를 등록하라고 요청했을 때만 수집하며 종료 훅은 없습니다. 개인 원본과 기기 설정은 이 공개 마켓플레이스 밖에 둡니다. Notion 복사는 후속 버전 기능입니다. 설치 후 새 채팅에서 setup을 실행하고 실제 호스트별 연결 상태를 확인하세요.
+
+자세한 내용은 [지식베이스 플러그인 안내](plugins/obsidian-knowledge-graph/README.md)를 참고하세요.
 
 ## 자소서 플러그인
 
