@@ -67,3 +67,9 @@ Deferred minors: 없음. 공개 MG 게시·Claude GUI 실행·fresh-chat 자연�
 - GitHub CLI로 Etchroot/Etchroot-knowledge-base isPrivate=true 재확인. 실제 Vault는 변경 없음·Inbox 0·미완료 작업 0. 개인 원본은 업로드하지 않았다.
 - D:/Obsidian/KnowledgeGraphBridge와 두 로컬 marketplace payload를 0.1.1로 갱신. MG 기존 plugin 항목은 보존. 공개 원격 push·PR·main merge는 실행하지 않았다.
 - 일상 사용 예: 새 Codex 채팅에서 “지식베이스 상태 확인해줘” → 작업 세션에서 최종 파일 지정 후 “이 최종본을 지식베이스에 등록해줘” → 필요할 때 “인박스 정리해줘”.
+
+## MG 게시 준비 (2026-10-12, 추가 사용자 지시)
+
+사용자가 로컬 main 병합과 GitHub push를 명시적으로 요청했다. 원격 main을 fetch해 변경 없음을 확인하고 9e3baac을 로컬 main에 fast-forward 병합했다.
+
+병합 후 검증에서 Windows core.autocrlf=true가 스킬과 번들의 줄바꿈을 바꾸는 문제를 재현했다. 배포본에 기존 .gitattributes를 포함하여 텍스트 LF와 번들 바이트를 보존하고, 패키지 검사는 CRLF frontmatter도 허용하도록 수정했다. 회귀 테스트 2개 RED→GREEN, 전체 39/39 통과·TypeScript 검사 통과. 개인 데이터나 config는 공개 배포본에 포함하지 않는다. 원격 게시 완료 여부는 GitHub main과 프로젝트의 구현 결과 문서에서 확인한다.
