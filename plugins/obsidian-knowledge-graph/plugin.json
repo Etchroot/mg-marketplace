@@ -1,6 +1,6 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "obsidian-knowledge-graph", "version": "0.1.1",
+  "name": "obsidian-knowledge-graph", "version": "0.1.2",
   "description": "명시적인 자료 등록·Inbox 정리·근거 요약·주제 링크·검색·Git 동기화를 제공하는 로컬 지식베이스 플러그인",
   "author": {"name": "myeonggeun"},
   "extensions": {"com.openai": {"interface": {

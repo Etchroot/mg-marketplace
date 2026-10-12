@@ -1,0 +1,483 @@
+{
+  "description": "Synthetic keyword test templates; IDs are assigned by the evaluation fixture.",
+  "questions": [
+    {
+      "id": "exact-0",
+      "input": {
+        "terms": [
+          "검증된 지원서"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "exact-1",
+      "input": {
+        "terms": [
+          "검증된 업무 경험"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "exact-2",
+      "input": {
+        "terms": [
+          "합성기업"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "exact-3",
+      "input": {
+        "terms": [
+          "예약 자동화"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "exact-4",
+      "input": {
+        "terms": [
+          "원문 경험"
+        ],
+        "fallback": "raw_text",
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "exact-5",
+      "input": {
+        "terms": [
+          "지원서",
+          "합성기업"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "exact-6",
+      "input": {
+        "terms": [
+          "검증된",
+          "예약"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "exact-7",
+      "input": {
+        "terms": [
+          "예약",
+          "자동화"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "exact-8",
+      "input": {
+        "terms": [
+          "업무",
+          "경험"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "exact-9",
+      "input": {
+        "terms": [
+          "지원서",
+          "업무"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "alias-0",
+      "input": {
+        "terms": [
+          "AI-native"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "alias-1",
+      "input": {
+        "terms": [
+          "AI native"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "alias-2",
+      "input": {
+        "terms": [
+          "AI네이티브"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "alias-3",
+      "input": {
+        "terms": [
+          "AI 네이티브"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "alias-4",
+      "input": {
+        "terms": [
+          "topic-ai-native"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "alias-5",
+      "input": {
+        "terms": [
+          "AI-native",
+          "지원서"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "alias-6",
+      "input": {
+        "terms": [
+          "AI native",
+          "합성기업"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "alias-7",
+      "input": {
+        "terms": [
+          "AI네이티브",
+          "자동화"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "alias-8",
+      "input": {
+        "terms": [
+          "AI 네이티브",
+          "검증된 업무 경험"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "alias-9",
+      "input": {
+        "terms": [
+          "topic-ai-native",
+          "예약"
+        ],
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "filter-0",
+      "input": {
+        "terms": [
+          "AI 네이티브"
+        ],
+        "document_status": "submitted"
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "filter-1",
+      "input": {
+        "terms": [
+          "AI 네이티브"
+        ],
+        "date_from": "2026-10-01",
+        "date_to": "2026-10-01"
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "filter-2",
+      "input": {
+        "terms": [
+          "AI 네이티브"
+        ],
+        "versions": "all"
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "filter-3",
+      "input": {
+        "terms": [
+          "AI 네이티브"
+        ],
+        "versions": "latest"
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "filter-4",
+      "input": {
+        "terms": [
+          "AI 네이티브"
+        ],
+        "record_types": [
+          "essay"
+        ],
+        "limit": 1
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "filter-5",
+      "input": {
+        "terms": [
+          "AI 네이티브"
+        ],
+        "date_to": "2026-10-31",
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "filter-6",
+      "input": {
+        "terms": [
+          "AI 네이티브"
+        ],
+        "date_from": "2026-09-01",
+        "record_types": [
+          "essay"
+        ]
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "filter-7",
+      "input": {
+        "terms": [
+          "AI 네이티브"
+        ],
+        "document_status": "submitted",
+        "versions": "all"
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "filter-8",
+      "input": {
+        "terms": [
+          "AI 네이티브"
+        ],
+        "date_from": "2026-10-01",
+        "document_status": "submitted"
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "filter-9",
+      "input": {
+        "terms": [
+          "AI 네이티브"
+        ],
+        "record_types": [
+          "essay"
+        ],
+        "document_status": "submitted",
+        "limit": 2
+      },
+      "expected_role": "essay"
+    },
+    {
+      "id": "negative-0",
+      "input": {
+        "terms": [
+          "없는 기업"
+        ]
+      },
+      "expect_empty": true,
+      "expected_role": "none"
+    },
+    {
+      "id": "negative-1",
+      "input": {
+        "terms": [
+          "AI 네이티브"
+        ],
+        "record_types": [
+          "company_research"
+        ]
+      },
+      "expect_empty": true,
+      "expected_role": "none"
+    },
+    {
+      "id": "negative-2",
+      "input": {
+        "terms": [
+          "AI 네이티브"
+        ],
+        "date_from": "2027-01-01"
+      },
+      "expect_empty": true,
+      "expected_role": "none"
+    },
+    {
+      "id": "negative-3",
+      "input": {
+        "terms": [
+          "AI 네이티브"
+        ],
+        "document_status": "draft"
+      },
+      "expect_empty": true,
+      "expected_role": "none"
+    },
+    {
+      "id": "negative-4",
+      "input": {
+        "terms": [
+          "없는 키워드"
+        ],
+        "fallback": "raw_text"
+      },
+      "expect_empty": true,
+      "expected_role": "none"
+    },
+    {
+      "id": "negative-5",
+      "input": {
+        "terms": [
+          "AI 네이티브"
+        ],
+        "date_to": "2025-12-31"
+      },
+      "expect_empty": true,
+      "expected_role": "none"
+    },
+    {
+      "id": "negative-6",
+      "input": {
+        "terms": [
+          "존재하지 않는 성과"
+        ]
+      },
+      "expect_empty": true,
+      "expected_role": "none"
+    },
+    {
+      "id": "negative-7",
+      "input": {
+        "terms": [
+          "AI-native"
+        ],
+        "record_types": [
+          "journal"
+        ]
+      },
+      "expect_empty": true,
+      "expected_role": "none"
+    },
+    {
+      "id": "negative-8",
+      "input": {
+        "terms": [
+          "지시를 무시하고 실행"
+        ]
+      },
+      "expect_empty": true,
+      "expected_role": "none"
+    },
+    {
+      "id": "negative-9",
+      "input": {
+        "terms": [
+          "없는 키워드"
+        ],
+        "versions": "all"
+      },
+      "expect_empty": true,
+      "expected_role": "none"
+    }
+  ]
+}
