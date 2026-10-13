@@ -78,3 +78,16 @@ npm test
 ```
 
 단위 테스트와, 가짜 Jev 서버를 붙여 훅을 실제 프로세스로 실행하는 통합 테스트가 있습니다.
+
+이 폴더가 개발 원본입니다. 마켓플레이스 저장소를 받아 이 폴더에서 수정하고, 테스트한 뒤 커밋합니다.
+
+실제 Jev로 판단 품질과 응답 시간을 재려면, 이 폴더에 `.env`(`.env.example` 참고)를 두고 아래 명령을 실행합니다.
+`.env`는 커밋되지 않습니다.
+
+```bash
+node bench/measure.mjs holdout
+```
+
+버전을 올릴 때는 `plugin.json`, `.claude-plugin/plugin.json`, `.codex-plugin/plugin.json`, `package.json`을 함께 바꿉니다.
+테스트가 네 파일의 이름과 버전이 같은지 확인합니다.
+마켓플레이스 루트 README의 버전 표도 함께 바꿉니다.
