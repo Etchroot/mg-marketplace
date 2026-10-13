@@ -1,0 +1,17 @@
+{
+  "name": "jev-model-harness",
+  "version": "0.2.1",
+  "description": "Jev로 요청마다 성격을 판단해서, 메인(Opus)이 넘길 가치가 있는 작업만 Haiku/Sonnet 서브에이전트에 위임하도록 안내합니다.",
+  "author": {
+    "name": "myeonggeun"
+  },
+  "repository": "https://github.com/Etchroot/mg-marketplace",
+  "userConfig": {
+    "typesafe_api_key": {
+      "type": "string",
+      "title": "TypeSafe (Jev) API key",
+      "description": "console.typesafe.ai/keys 에서 발급한 키. OS 보안 저장소에 보관됩니다.",
+      "sensitive": true
+    }
+  }
+}

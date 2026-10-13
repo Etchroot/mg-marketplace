@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "jev-model-harness",
+  "version": "0.2.1",
+  "description": "사용자 입력마다 Jev로 요청의 성격을 판단해서, 메인 모델이 넘길 가치가 있는 작업만 더 싼 모델의 서브에이전트에 위임하도록 안내하는 하네스 플러그인",
+  "author": {
+    "name": "myeonggeun"
+  },
+  "extensions": {
+    "com.openai": {
+      "hooks": "./hooks/hooks.json",
+      "interface": {
+        "displayName": "Jev Model Classification Harness",
+        "shortDescription": "Jev 판단으로 작업을 싼 모델 서브에이전트에 위임",
+        "longDescription": "UserPromptSubmit 훅이 Jev(TypeSafe AI)로 요청을 판단합니다. Claude Code에서는 Opus 메인이 Haiku/Sonnet 서브에이전트에, Codex에서는 gpt-6.1-sol 메인이 Luna 서브에이전트에 위임합니다. Node 20 이상과 Jev API 키가 필요합니다.",
+        "developerName": "myeonggeun",
+        "category": "Productivity"
+      }
+    }
+  }
+}

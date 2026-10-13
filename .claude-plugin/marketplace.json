@@ -18,6 +18,11 @@
       "name": "obsidian-knowledge-graph",
       "source": "./plugins/obsidian-knowledge-graph",
       "description": "개인 자료 등록·요약·지식 연결·검색·Git 동기화"
+    },
+    {
+      "name": "jev-model-harness",
+      "source": "./plugins/jev-model-harness",
+      "description": "Jev로 요청을 판단해 넘길 가치가 있는 작업만 싼 모델 서브에이전트에 위임"
     }
   ],
   "metadata": {
