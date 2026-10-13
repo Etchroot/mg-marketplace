@@ -1,0 +1,14 @@
+{
+  "name": "jev-model-harness",
+  "version": "0.2.1",
+  "private": true,
+  "type": "module",
+  "description": "Claude Code / Codex plugin: Jev-based routing to cheaper subagents",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.mjs\"",
+    "setup:codex": "node scripts/setup-codex.mjs"
+  }
+}

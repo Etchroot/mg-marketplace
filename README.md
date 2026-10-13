@@ -9,6 +9,7 @@
 | [music-director](plugins/music-director/README.md) | 0.2.1 | Suno 작곡 플러그인, 레퍼런스 분석, 곡 기획·가사·Suno 프롬프트 구성, 작품 정리 |
 | [application-coach](plugins/application-coach/README.md) | 0.1.1 | 자소서 작성 서치 및 작성 플러그인, 실제 채용 문항 제안, 경험 인터뷰, 자소서 답변과 경험 기록 저장 |
 | [obsidian-knowledge-graph](plugins/obsidian-knowledge-graph/README.md) | 0.1.2 | 옵시디언 지식 그래프 플러그인, 제목 기반 정리, 자기소개서 허브, 빈 Inbox 정리, 근거 요약·주제 연결·검색·Private Git 동기화 |
+| [jev-model-harness](plugins/jev-model-harness/README.md) | 0.2.1 | Jev Model Classification Harness, 요청마다 Jev로 판단해 넘길 가치가 있는 작업만 싼 모델 서브에이전트에 위임 (Claude Code: Opus → Haiku/Sonnet, Codex: gpt-6.1-sol → Luna) |
 
 music-director는 장르·보컬·언어·곡 구조를 곡별로 선택합니다. 특정 곡에서 사용한 설정을 모든 곡의 기본값으로 고정하지 않습니다. Suno에 직접 접속하거나 음악을 생성하지 않으며, API 키나 Suno 계정 연결이 필요하지 않습니다.
 
@@ -56,6 +57,7 @@ mg-marketplace/
 ├── README.md
 └── plugins/
     ├── application-coach/                 # 경험 인터뷰·자소서 저장
+    ├── jev-model-harness/                 # Jev 기반 모델 분류·위임 훅
     └── music-director/
         ├── plugin.json
         ├── .codex-plugin/plugin.json
@@ -92,3 +94,18 @@ obsidian-knowledge-graph는 Codex와 Claude Code의 로컬 MCP에서 Markdown Va
 application-coach는 최근 2년의 검증된 자소서 질문 최대 50개를 저장하고, 대화로 경험을 끌어내 답변과 경험 기록을 남깁니다. 개인 데이터는 공개 저장소 바깥에 보관합니다. 자세한 사용법과 도구의 범위는 [플러그인 README](plugins/application-coach/README.md)를 참고하세요.
 
 공개 요청된 자소서와 경험 기록: [잔향·GIDDA 자료 모음](portfolio/application-essays/README.md). 원본과 자소서 본문을 보존하고 다섯 항목의 경험 기록을 별도로 정리했습니다.
+
+## 모델 분류 하네스 플러그인
+
+jev-model-harness는 사용자 입력마다 `UserPromptSubmit` 훅으로 [Jev](https://docs.typesafe.ai)를 한 번 호출해 요청의 성격을 판단합니다. 메인 모델은 바꾸지 않고, 이전 대화 없이 처리할 수 있고 직접 작업이 필요한 요청만 더 싼 모델의 서브에이전트에 넘기도록 안내합니다. 그래서 메인 대화의 프롬프트 캐시가 유지됩니다.
+
+```sh
+claude plugin install jev-model-harness@mg-marketplace
+```
+
+- Node 20 이상과 Jev API 키가 필요합니다. 키는 Claude Code 플러그인 설정(보안 저장소) 또는 환경변수 `TYPESAFE_API_KEY`로 넣습니다.
+- 메인 모델은 Claude Code에서 Opus, Codex에서 gpt-6.1-sol을 권장합니다. 다른 모델이면 세션당 한 번 경고합니다.
+- Codex에서는 서브에이전트를 플러그인에 넣을 수 없어 `npm run setup:codex`로 따로 설치하고, `/hooks`에서 훅을 신뢰 승인해야 합니다. 실제 Codex 동작은 아직 검증하지 않았습니다.
+- 위임 지시는 권고이며, Jev 오류나 키가 없을 때는 메인이 그대로 처리합니다.
+
+설계와 측정 근거는 [플러그인 README](plugins/jev-model-harness/README.md)와 [SPEC](plugins/jev-model-harness/SPEC.md)을 참고하세요.
