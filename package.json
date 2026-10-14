@@ -1,0 +1,15 @@
+{
+  "name": "mg-marketplace",
+  "private": true,
+  "type": "module",
+  "description": "MG Marketplace 관리 도구 (버전 올리기, 전체 검사, 프로젝트별 설정)",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "check": "node tools/check.mjs",
+    "bump": "node tools/bump.mjs",
+    "setup-project": "node tools/setup-project.mjs",
+    "test": "node --test \"tools/test/*.test.mjs\""
+  }
+}

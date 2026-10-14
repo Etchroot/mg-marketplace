@@ -1,0 +1,18 @@
+{
+  "application-coach": {
+    "version": "0.1.1",
+    "runtimeHash": "fea606009eafadf83f985850843c400ded722f1e1d8aa65180baac52c7015e8d"
+  },
+  "jev-model-harness": {
+    "version": "0.2.1",
+    "runtimeHash": "43cb81b190f9c544c7ee0d7576baa641f799437b1cd700bfa53bd385eb2a2c94"
+  },
+  "music-director": {
+    "version": "0.2.1",
+    "runtimeHash": "49cf18531c6f093331da20a1d682fd4dc439c5201888525bab5e3de3d478a1c5"
+  },
+  "obsidian-knowledge-graph": {
+    "version": "0.1.2",
+    "runtimeHash": "9fc3ae4d579778f6b3eb12990aec08b4de557423eac5fc10f844862508f38790"
+  }
+}

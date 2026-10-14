@@ -1,0 +1,42 @@
+# 푸시와 PR 때마다 마켓플레이스 전체를 검사한다. AI 모델이나 API 키는 쓰지 않는다.
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  marketplace:
+    name: 마켓플레이스 검사 (버전·카탈로그·도구)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: 버전·지문·카탈로그 검사
+        run: node tools/check.mjs
+      - name: 관리 도구 테스트
+        run: npm test
+
+  jev-model-harness:
+    name: jev-model-harness 테스트 (${{ matrix.os }}, Node ${{ matrix.node }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [22, 24]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: plugins/jev-model-harness
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm test

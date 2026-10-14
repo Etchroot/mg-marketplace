@@ -89,7 +89,8 @@ node bench/measure.mjs holdout
 ```
 
 실행 파일(`hooks/`, `scripts/`, `agents/`, `codex/`, 매니페스트)을 바꿨다면 `npm run bump`로 버전을 올립니다.
-- 매니페스트 3개, `package.json`, 마켓플레이스 README의 버전 표, `release.json`이 한 번에 바뀝니다.
-- 버전을 올리지 않으면 `npm test`가 실패하며 안내합니다.
+- 마켓플레이스 루트의 `tools/bump.mjs`를 부르는 명령입니다.
+- 버전 파일, 루트 README의 버전 표, 루트 `releases.json`이 한 번에 바뀝니다.
+- 버전을 올리지 않으면 루트의 `node tools/check.mjs`와 GitHub Actions가 실패하며 안내합니다.
 
 자세한 작업 규칙은 [AGENTS.md](AGENTS.md)에 있습니다. 에이전트는 이 파일을 자동으로 읽습니다.
