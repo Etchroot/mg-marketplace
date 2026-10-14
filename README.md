@@ -42,6 +42,41 @@ claude plugin install music-director@mg-marketplace
 
 공식 안내: [Claude Code 마켓플레이스](https://code.claude.com/docs/en/plugin-marketplaces)
 
+### 프로젝트별로 켜고 자동 업데이트 받기
+
+플러그인은 내 계정 전체(user)가 아니라 **필요한 프로젝트에서만** 켜는 것을 권장합니다. 이 저장소를 받은 뒤 루트에서 실행합니다.
+
+```sh
+node tools/setup-project.mjs <프로젝트 폴더> <플러그인> [<플러그인> ...]
+```
+
+예: `node tools/setup-project.mjs C:\work\my-app jev-model-harness music-director`
+
+- 그 프로젝트의 `.claude/settings.local.json`에만 씁니다. 이 파일은 나만 쓰는 설정이고 git에 올라가지 않습니다.
+  - 고른 플러그인을 켭니다.
+  - `mg-marketplace`의 **자동 업데이트**를 켭니다.
+- `--shared`를 붙이면 `.claude/settings.json`에 씁니다. 그 프로젝트를 받는 팀원 모두에게 적용됩니다.
+- `claude` CLI가 있으면 플러그인을 바로 내려받고, 없으면 다음 세션을 시작할 때 내려받습니다.
+
+**자동 업데이트 동작**
+- 대화형 세션에서 첫 메시지를 보낸 뒤 최대 10분 안에 새 버전을 확인합니다.
+- 새 버전은 `/reload-plugins`를 실행하거나 다음에 실행할 때 적용됩니다.
+- 플러그인의 `version`이 바뀐 경우에만 새로 받습니다. 그래서 이 저장소는 버전 관리 도구로 이를 지킵니다. 아래 "버전 관리"를 참고하세요.
+- 환경변수 `DISABLE_AUTOUPDATER=1`이 설정된 환경에서는 플러그인 자동 업데이트도 꺼집니다. Claude 데스크톱 앱 세션이 이 경우에 해당할 수 있습니다.
+  - `FORCE_AUTOUPDATE_PLUGINS=1`을 함께 설정하면 켜집니다.
+  - 꺼져 있을 때는 `claude plugin marketplace update mg-marketplace`로 직접 받습니다.
+
+## 버전 관리
+
+다른 PC와 에이전트에 변경이 빠짐없이 전달되도록, 실행 파일이 바뀌면 그 플러그인의 버전을 반드시 올립니다.
+- 규칙: [AGENTS.md](AGENTS.md). Claude Code와 Codex는 이 파일을 자동으로 읽습니다.
+- 푸시할 때마다 GitHub Actions가 검사합니다.
+
+```sh
+node tools/bump.mjs <플러그인> [patch|minor|major]   # 버전 파일·README 표·releases.json을 함께 올림
+node tools/check.mjs                                  # 전체 검사: 버전 누락, 버전 불일치, 카탈로그·README 누락
+```
+
 ## 사용 예시
 
 > music-director의 lyric-direction 스킬로 곡을 기획해 줘. 한국어 중심의 전자 팝으로 가사부터 시작하고 싶어. 보컬과 코러스 구성은 아직 정하지 말자.
@@ -54,6 +89,10 @@ claude plugin install music-director@mg-marketplace
 mg-marketplace/
 ├── .agents/plugins/marketplace.json        # Codex 카탈로그
 ├── .claude-plugin/marketplace.json         # Claude Code 카탈로그
+├── .github/workflows/check.yml             # 푸시마다 전체 검사
+├── AGENTS.md / CLAUDE.md                   # 에이전트 작업 규칙
+├── releases.json                           # 플러그인별 마지막 버전과 실행 파일 지문
+├── tools/                                  # bump, check, setup-project
 ├── README.md
 └── plugins/
     ├── application-coach/                 # 경험 인터뷰·자소서 저장
@@ -73,6 +112,11 @@ mg-marketplace/
 ## 플러그인 추가
 
 새 플러그인을 `plugins/<이름>/`에 넣고 두 마켓플레이스 카탈로그의 `plugins` 배열에 등록합니다. 카탈로그의 이름은 플러그인 manifest의 이름과 일치해야 하고, source는 저장소 루트 기준 경로를 사용합니다.
+
+그다음 아래를 합니다.
+- 루트 README 표에 행을 추가합니다.
+- `node tools/bump.mjs <이름> record`로 첫 기록을 남깁니다. 버전은 바뀌지 않습니다.
+- `node tools/check.mjs`로 확인합니다.
 
 ## 검증
 
