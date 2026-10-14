@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "node --test \"test/**/*.test.mjs\"",
-    "setup:codex": "node scripts/setup-codex.mjs"
+    "setup:codex": "node scripts/setup-codex.mjs",
+    "bump": "node tools/bump.mjs"
   }
 }
