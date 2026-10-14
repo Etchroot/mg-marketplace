@@ -142,7 +142,6 @@ mg-marketplace/
 ├── AGENTS.md, CLAUDE.md              # 에이전트 작업 규칙
 ├── releases.json                     # 플러그인별 마지막 버전과 실행 파일 지문
 ├── tools/                            # bump, check, setup-project
-├── portfolio/                        # 공개 요청된 자소서·경험 기록
 └── plugins/
     └── <플러그인>/
         ├── plugin.json               # 공통 매니페스트 (Codex)
@@ -152,6 +151,4 @@ mg-marketplace/
         └── skills/ · hooks/ · agents/ · scripts/ …
 ```
 
-## 공개 자료
-
-[잔향·GIDDA 자료 모음](portfolio/application-essays/README.md)은 공개를 요청받은 자소서와 경험 기록입니다. 원본과 자소서 본문을 보존하고, 다섯 항목의 경험 기록을 따로 정리했습니다.
+이 저장소에는 플러그인과 스킬, 그리고 그것을 관리하는 도구만 둡니다. 플러그인으로 만든 결과물(자소서, 곡, 지식베이스 자료 등)과 개인 데이터는 넣지 않습니다.
