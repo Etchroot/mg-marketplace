@@ -11,6 +11,7 @@ import {records} from '../records/repository.js';
 import {buildCatalog,catalogFiles} from '../catalog/build.js';
 import {rebuild} from '../catalog/build.js';
 import {validateReferences} from '../notes/validate.js';
+import {VERSION} from '../version.js';
 const exec=promisify(execFile);
 export interface GitTransport {assertPrivate(root:string,remote:string):Promise<void>;run(root:string,...args:string[]):Promise<string>}
 async function run(root:string,...args:string[]):Promise<string>{
@@ -52,7 +53,7 @@ export async function syncPreview(root:string,id:string,destinations:string[]):P
   const files=[];for(const p of await ownedPaths(root,op)){if(!allowedPath(p))fail('POLICY_BLOCKED');files.push({path:p,hash:await hashAt(root,p)});}
   const plan:SyncPlan={preview_id:randomUUID(),operation_id:id,destinations:[...new Set(destinations)],expires_at:Date.now()+600000,files};
   await writeAtomic(root,'.kg-runtime/sync-previews/'+plan.preview_id+'.json',json(plan));
-  return {preview_id:plan.preview_id,operation_id:id,destinations:plan.destinations,changed_paths:files.map(f=>f.path),warnings:['Git synchronization includes prior completed, unsynchronized registrations required by the shared catalog.','Notion is not supported by version 0.1.2.']};
+  return {preview_id:plan.preview_id,operation_id:id,destinations:plan.destinations,changed_paths:files.map(f=>f.path),warnings:['Git synchronization includes prior completed, unsynchronized registrations required by the shared catalog.',`Notion is not supported by version ${VERSION}.`]};
 }
 export async function pushOperation(config:Config,op:Operation,transport:GitTransport=gitTransport):Promise<OperationResult>{
   if(!op.result)fail('INVALID_INPUT');
@@ -88,9 +89,9 @@ export async function pushOperation(config:Config,op:Operation,transport:GitTran
     if(!commit){
       const covered=(await list(root)).filter(o=>o.result&&o.result.github_state!=='succeeded'&&['capture','organize'].includes(o.kind)).map(o=>o.operation_id);if(!covered.includes(op.operation_id))covered.push(op.operation_id);
       const paths=await ownedPaths(root,op);for(const p of paths){if(!allowedPath(p))fail('POLICY_BLOCKED');await resolveInside(root,p);}
-      const existing=[];for(const p of paths){if(await hashAt(root,p)!==null||(await transport.run(root,'ls-files','--',p)))existing.push(p);}
+      const existing=[];for(const p of paths){if(await hashAt(root,p)!==null||(await transport.run(root,'ls-files','--',':(literal)'+p)))existing.push(p);}
       if(!existing.length)fail('INVALID_INPUT');
-      await transport.run(root,'add','--',...existing);
+      await transport.run(root,'add','--',...existing.map(p=>':(literal)'+p));
       const staged=(await transport.run(root,'diff','--cached','--name-only','-z')).split('\0').filter(Boolean);
       if(staged.some(p=>!paths.includes(p)))fail('POLICY_BLOCKED');
       if(staged.length)await transport.run(root,'commit','-m','knowledge: '+op.kind+' '+op.operation_id);

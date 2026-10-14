@@ -8,7 +8,7 @@
 | --- | --- | --- |
 | [music-director](plugins/music-director/README.md) | 0.2.1 | Suno 작곡 플러그인, 레퍼런스 분석, 곡 기획·가사·Suno 프롬프트 구성, 작품 정리 |
 | [application-coach](plugins/application-coach/README.md) | 0.1.1 | 자소서 작성 서치 및 작성 플러그인, 실제 채용 문항 제안, 경험 인터뷰, 자소서 답변과 경험 기록 저장 |
-| [obsidian-knowledge-graph](plugins/obsidian-knowledge-graph/README.md) | 0.1.2 | 옵시디언 지식 그래프 플러그인, 제목 기반 정리, 자기소개서 허브, 빈 Inbox 정리, 근거 요약·주제 연결·검색·Private Git 동기화 |
+| [obsidian-knowledge-graph](plugins/obsidian-knowledge-graph/README.md) | 0.2.0 | 옵시디언 지식 그래프 플러그인, 직접 작성한 Inbox 등록, 중복 방지, 수정본 보존, 제목 기반 정리, 자기소개서 허브, 근거 요약과 Private Git 동기화 |
 | [jev-model-harness](plugins/jev-model-harness/README.md) | 0.2.1 | Jev Model Classification Harness, 요청마다 Jev로 판단해 넘길 가치가 있는 작업만 싼 모델 서브에이전트에 위임 (Claude Code: Opus → Haiku/Sonnet, Codex: gpt-6.1-sol → Luna) |
 
 music-director는 장르·보컬·언어·곡 구조를 곡별로 선택합니다. 특정 곡에서 사용한 설정을 모든 곡의 기본값으로 고정하지 않습니다. Suno에 직접 접속하거나 음악을 생성하지 않으며, API 키나 Suno 계정 연결이 필요하지 않습니다.

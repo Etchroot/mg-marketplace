@@ -44,7 +44,7 @@ export async function loadCatalog(root:string):Promise<Snapshot>{
   const m=JSON.parse((await bytes(root,'99_System/catalog/manifest.json')).toString());
   return {records:a.records,topics:b.topics,edges:c.edges,fingerprint:m.fingerprint};
 }
-export async function coverage(root:string,rows:CatalogRow[]):Promise<{inbox_count:number;unsearchable_count:number;stale_summary_count:number}>{
-  let stale=0,unsearchable=0;for(const r of rows){const current=await hashAt(root,r.raw_path);if(r.summary_path&&current!==r.source_sha256)stale++;if(r.extraction==='unsupported'||r.extraction==='provided'&&(current!==r.source_sha256||!r.extracted_path||await hashAt(root,r.extracted_path)!==r.extracted_sha256))unsearchable++;}
-  return {inbox_count:rows.filter(r=>r.state==='inbox').length,unsearchable_count:unsearchable,stale_summary_count:stale};
+export async function coverage(root:string,rows:CatalogRow[]):Promise<{inbox_count:number;unsearchable_count:number;stale_summary_count:number;modified_source_count:number}>{
+  let stale=0,unsearchable=0,modified=0;for(const r of rows){const current=await hashAt(root,r.raw_path);if(current!==null&&current!==r.source_sha256)modified++;if(r.summary_path&&current!==r.source_sha256)stale++;if(r.extraction==='unsupported'||r.extraction==='provided'&&(current!==r.source_sha256||!r.extracted_path||await hashAt(root,r.extracted_path)!==r.extracted_sha256))unsearchable++;}
+  return {inbox_count:rows.filter(r=>r.state==='inbox').length,unsearchable_count:unsearchable,stale_summary_count:stale,modified_source_count:modified};
 }

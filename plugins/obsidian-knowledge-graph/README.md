@@ -1,5 +1,11 @@
 # Obsidian Knowledge Graph
 
+## 직접 작성한 Inbox 자료
+
+Obsidian에서 일기와 메모를 `00_Inbox`에 작성하고 이후 “Inbox 정리해줘”라고 요청할 수 있습니다. 미등록 파일을 하위 폴더까지 탐색하고 현재 위치에서 등록한 뒤 분류할 때 한 번만 이동합니다. 같은 경로의 반복 등록은 기록을 늘리지 않습니다.
+
+이미 등록된 원문을 수정하면 이전 바이트를 복원해 보존하고 수정본을 새 revision으로 등록합니다. 이전 바이트를 확보할 수 없으면 보류합니다. [직접 작성 흐름과 제한](docs/inbox.md)을 확인하세요.
+
 ## 0.1.2: 옵시디언에서 읽기 쉬운 정리
 
 원본과 요약은 제목 기반 파일명을 사용합니다. UUID·revision·원본 해시는 내부 메타데이터로 유지하며, 같은 제목은 짧은 구분자로 충돌을 피합니다. 모든 `essay` 요약은 `30_Topics/자기소개서.md` 허브에 직접 연결되고 다음 정리 때 목록이 자동으로 확장됩니다. 개별 주제 연결은 유지합니다.
@@ -17,7 +23,7 @@ node dist/cli.cjs migrate-readable --config /absolute/path/config.json --apply
 
 Marketplace 패키지는 실행 번들과 함께 소스·합성 회귀 테스트를 포함합니다. 개인 Vault·기기 설정·자격 증명은 포함하지 않습니다.
 
-Codex 앱과 Claude Code에서 개인 Markdown Vault를 지식 저장소로 사용하는 **로컬 플러그인 0.1.1**입니다. Obsidian 실행은 필요하지 않습니다.
+Codex 앱과 Claude Code에서 개인 Markdown Vault를 지식 저장소로 사용하는 로컬 플러그인입니다. Obsidian 실행은 필요하지 않습니다.
 
 ## 사용하는 방법
 
