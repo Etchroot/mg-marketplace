@@ -1,0 +1,246 @@
+{
+  "total": 40,
+  "passed": 40,
+  "results": [
+    {
+      "id": "exact-0",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 517
+    },
+    {
+      "id": "exact-1",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 522
+    },
+    {
+      "id": "exact-2",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 517
+    },
+    {
+      "id": "exact-3",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 519
+    },
+    {
+      "id": "exact-4",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 528
+    },
+    {
+      "id": "exact-5",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 540
+    },
+    {
+      "id": "exact-6",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 530
+    },
+    {
+      "id": "exact-7",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 522
+    },
+    {
+      "id": "exact-8",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 532
+    },
+    {
+      "id": "exact-9",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 549
+    },
+    {
+      "id": "alias-0",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 542
+    },
+    {
+      "id": "alias-1",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 542
+    },
+    {
+      "id": "alias-2",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 539
+    },
+    {
+      "id": "alias-3",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 540
+    },
+    {
+      "id": "alias-4",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 548
+    },
+    {
+      "id": "alias-5",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 556
+    },
+    {
+      "id": "alias-6",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 560
+    },
+    {
+      "id": "alias-7",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 545
+    },
+    {
+      "id": "alias-8",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 552
+    },
+    {
+      "id": "alias-9",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 553
+    },
+    {
+      "id": "filter-0",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 540
+    },
+    {
+      "id": "filter-1",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 540
+    },
+    {
+      "id": "filter-2",
+      "passed": true,
+      "returned_count": 2,
+      "response_chars": 803
+    },
+    {
+      "id": "filter-3",
+      "passed": true,
+      "returned_count": 2,
+      "response_chars": 806
+    },
+    {
+      "id": "filter-4",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 540
+    },
+    {
+      "id": "filter-5",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 540
+    },
+    {
+      "id": "filter-6",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 540
+    },
+    {
+      "id": "filter-7",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 537
+    },
+    {
+      "id": "filter-8",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 540
+    },
+    {
+      "id": "filter-9",
+      "passed": true,
+      "returned_count": 1,
+      "response_chars": 540
+    },
+    {
+      "id": "negative-0",
+      "passed": true,
+      "returned_count": 0,
+      "response_chars": 276
+    },
+    {
+      "id": "negative-1",
+      "passed": true,
+      "returned_count": 0,
+      "response_chars": 278
+    },
+    {
+      "id": "negative-2",
+      "passed": true,
+      "returned_count": 0,
+      "response_chars": 278
+    },
+    {
+      "id": "negative-3",
+      "passed": true,
+      "returned_count": 0,
+      "response_chars": 278
+    },
+    {
+      "id": "negative-4",
+      "passed": true,
+      "returned_count": 0,
+      "response_chars": 281
+    },
+    {
+      "id": "negative-5",
+      "passed": true,
+      "returned_count": 0,
+      "response_chars": 278
+    },
+    {
+      "id": "negative-6",
+      "passed": true,
+      "returned_count": 0,
+      "response_chars": 281
+    },
+    {
+      "id": "negative-7",
+      "passed": true,
+      "returned_count": 0,
+      "response_chars": 280
+    },
+    {
+      "id": "negative-8",
+      "passed": true,
+      "returned_count": 0,
+      "response_chars": 282
+    },
+    {
+      "id": "negative-9",
+      "passed": true,
+      "returned_count": 0,
+      "response_chars": 274
+    }
+  ]
+}

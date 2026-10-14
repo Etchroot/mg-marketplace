@@ -60,3 +60,25 @@ test('broken references block direct synchronization before staging',async()=>{
     const result=await pushOperation({...h.config,git:{enabled:true,remote:'origin',branch:'main',push_on_capture:true}},await get(h.vault,o.operation_id),privateTransport);expect(result.github_state).toBe('failed');expect(result.errors.some(e=>e.code==='BROKEN_LINK')).toBe(true);expect(await git(h.vault,'ls-files')).toBe('');
   }finally{await h.dispose();}
 });
+
+test('a handwritten note already pushed by Obsidian can be adopted, organized and synced without uploading other loose notes',async()=>{
+  const h=await createHarness();try{await h.setup();const remote=await remoteHarness(h);const inbox='00_Inbox/일기.md';
+    await writeFile(path.join(h.vault,inbox),'직접 작성한 일기\r\n');await git(h.vault,'add','--',inbox,'.gitattributes');await git(h.vault,'commit','-m','Obsidian note');await git(h.vault,'push','origin','main');
+    await writeFile(path.join(h.vault,'00_Inbox/아직 작성 중.md'),'보내지 않을 초안');
+    const p=await h.invoke('kg_capture_preview',{inbox_path:inbox,title:'직접 쓴 일기',type:'journal'});await h.invoke('kg_capture_commit',{preview_id:p.preview_id});
+    const organized=await h.organize(p.record_id,{category:'Journal'});const r=await pushOperation({...h.config,git:{enabled:true,remote:'origin',branch:'main',push_on_capture:true}},await get(h.vault,organized.operation_id),privateTransport);
+    expect(r.github_state).toBe('succeeded');const tree=await git(h.dir,'--git-dir',remote,'ls-tree','-r','--name-only','main');
+    expect(tree).toContain('10_Raw/Journal/');expect(tree).toContain('20_Summaries/Journal/');expect(tree).not.toContain(inbox);expect(tree).not.toContain('아직 작성 중');
+    expect((await h.rawBytes(p.record_id)).toString()).toBe('직접 작성한 일기\r\n');
+  }finally{await h.dispose();}
+});
+
+test('direct registration with Git wildcard characters only stages its literal Inbox filename',async()=>{
+  const h=await createHarness();try{await h.setup();await remoteHarness(h);
+    for(const name of ['[ab]','a','b'])await writeFile(path.join(h.vault,'00_Inbox/'+name+'.md'),name);
+    const p=await h.invoke('kg_capture_preview',{inbox_path:'00_Inbox/[ab].md',title:'브래킷 메모',type:'other'});const captured=await h.invoke('kg_capture_commit',{preview_id:p.preview_id});
+    const r=await pushOperation({...h.config,git:{enabled:true,remote:'origin',branch:'main',push_on_capture:true}},await get(h.vault,captured.operation_id),privateTransport);
+    expect(r.github_state).toBe('succeeded');const tracked=await git(h.vault,'ls-files');expect(tracked).toContain('00_Inbox/[ab].md');expect(tracked).not.toContain('00_Inbox/a.md');expect(tracked).not.toContain('00_Inbox/b.md');
+    expect(await git(h.vault,'diff','--cached','--name-only')).toBe('');
+  }finally{await h.dispose();}
+});

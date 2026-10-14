@@ -33,9 +33,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/identity.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/identity.js
 var require_identity = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/identity.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/identity.js"(exports2) {
     "use strict";
     var ALIAS = /* @__PURE__ */ Symbol.for("yaml.alias");
     var DOC = /* @__PURE__ */ Symbol.for("yaml.document");
@@ -90,9 +90,9 @@ var require_identity = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/visit.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/visit.js
 var require_visit = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/visit.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/visit.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var BREAK = /* @__PURE__ */ Symbol("break visit");
@@ -110,17 +110,17 @@ var require_visit = __commonJS({
     visit2.BREAK = BREAK;
     visit2.SKIP = SKIP;
     visit2.REMOVE = REMOVE;
-    function visit_(key, node2, visitor, path12) {
-      const ctrl = callVisitor(key, node2, visitor, path12);
+    function visit_(key, node2, visitor, path13) {
+      const ctrl = callVisitor(key, node2, visitor, path13);
       if (identity.isNode(ctrl) || identity.isPair(ctrl)) {
-        replaceNode(key, path12, ctrl);
-        return visit_(key, ctrl, visitor, path12);
+        replaceNode(key, path13, ctrl);
+        return visit_(key, ctrl, visitor, path13);
       }
       if (typeof ctrl !== "symbol") {
         if (identity.isCollection(node2)) {
-          path12 = Object.freeze(path12.concat(node2));
+          path13 = Object.freeze(path13.concat(node2));
           for (let i = 0; i < node2.items.length; ++i) {
-            const ci = visit_(i, node2.items[i], visitor, path12);
+            const ci = visit_(i, node2.items[i], visitor, path13);
             if (typeof ci === "number")
               i = ci - 1;
             else if (ci === BREAK)
@@ -131,13 +131,13 @@ var require_visit = __commonJS({
             }
           }
         } else if (identity.isPair(node2)) {
-          path12 = Object.freeze(path12.concat(node2));
-          const ck = visit_("key", node2.key, visitor, path12);
+          path13 = Object.freeze(path13.concat(node2));
+          const ck = visit_("key", node2.key, visitor, path13);
           if (ck === BREAK)
             return BREAK;
           else if (ck === REMOVE)
             node2.key = null;
-          const cv = visit_("value", node2.value, visitor, path12);
+          const cv = visit_("value", node2.value, visitor, path13);
           if (cv === BREAK)
             return BREAK;
           else if (cv === REMOVE)
@@ -158,17 +158,17 @@ var require_visit = __commonJS({
     visitAsync.BREAK = BREAK;
     visitAsync.SKIP = SKIP;
     visitAsync.REMOVE = REMOVE;
-    async function visitAsync_(key, node2, visitor, path12) {
-      const ctrl = await callVisitor(key, node2, visitor, path12);
+    async function visitAsync_(key, node2, visitor, path13) {
+      const ctrl = await callVisitor(key, node2, visitor, path13);
       if (identity.isNode(ctrl) || identity.isPair(ctrl)) {
-        replaceNode(key, path12, ctrl);
-        return visitAsync_(key, ctrl, visitor, path12);
+        replaceNode(key, path13, ctrl);
+        return visitAsync_(key, ctrl, visitor, path13);
       }
       if (typeof ctrl !== "symbol") {
         if (identity.isCollection(node2)) {
-          path12 = Object.freeze(path12.concat(node2));
+          path13 = Object.freeze(path13.concat(node2));
           for (let i = 0; i < node2.items.length; ++i) {
-            const ci = await visitAsync_(i, node2.items[i], visitor, path12);
+            const ci = await visitAsync_(i, node2.items[i], visitor, path13);
             if (typeof ci === "number")
               i = ci - 1;
             else if (ci === BREAK)
@@ -179,13 +179,13 @@ var require_visit = __commonJS({
             }
           }
         } else if (identity.isPair(node2)) {
-          path12 = Object.freeze(path12.concat(node2));
-          const ck = await visitAsync_("key", node2.key, visitor, path12);
+          path13 = Object.freeze(path13.concat(node2));
+          const ck = await visitAsync_("key", node2.key, visitor, path13);
           if (ck === BREAK)
             return BREAK;
           else if (ck === REMOVE)
             node2.key = null;
-          const cv = await visitAsync_("value", node2.value, visitor, path12);
+          const cv = await visitAsync_("value", node2.value, visitor, path13);
           if (cv === BREAK)
             return BREAK;
           else if (cv === REMOVE)
@@ -212,23 +212,23 @@ var require_visit = __commonJS({
       }
       return visitor;
     }
-    function callVisitor(key, node2, visitor, path12) {
+    function callVisitor(key, node2, visitor, path13) {
       if (typeof visitor === "function")
-        return visitor(key, node2, path12);
+        return visitor(key, node2, path13);
       if (identity.isMap(node2))
-        return visitor.Map?.(key, node2, path12);
+        return visitor.Map?.(key, node2, path13);
       if (identity.isSeq(node2))
-        return visitor.Seq?.(key, node2, path12);
+        return visitor.Seq?.(key, node2, path13);
       if (identity.isPair(node2))
-        return visitor.Pair?.(key, node2, path12);
+        return visitor.Pair?.(key, node2, path13);
       if (identity.isScalar(node2))
-        return visitor.Scalar?.(key, node2, path12);
+        return visitor.Scalar?.(key, node2, path13);
       if (identity.isAlias(node2))
-        return visitor.Alias?.(key, node2, path12);
+        return visitor.Alias?.(key, node2, path13);
       return void 0;
     }
-    function replaceNode(key, path12, node2) {
-      const parent = path12[path12.length - 1];
+    function replaceNode(key, path13, node2) {
+      const parent = path13[path13.length - 1];
       if (identity.isCollection(parent)) {
         parent.items[key] = node2;
       } else if (identity.isPair(parent)) {
@@ -248,9 +248,9 @@ var require_visit = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/directives.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/directives.js
 var require_directives = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/directives.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/directives.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var visit2 = require_visit();
@@ -419,9 +419,9 @@ var require_directives = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/anchors.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/anchors.js
 var require_anchors = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/anchors.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/anchors.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var visit2 = require_visit();
@@ -489,9 +489,9 @@ var require_anchors = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/applyReviver.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/applyReviver.js
 var require_applyReviver = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/applyReviver.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/applyReviver.js"(exports2) {
     "use strict";
     function applyReviver(reviver, obj, key, val) {
       if (val && typeof val === "object") {
@@ -539,9 +539,9 @@ var require_applyReviver = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/toJS.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/toJS.js
 var require_toJS = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/toJS.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/toJS.js"(exports2) {
     "use strict";
     var identity = require_identity();
     function toJS(value, arg, ctx) {
@@ -569,9 +569,9 @@ var require_toJS = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Node.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Node.js
 var require_Node = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Node.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Node.js"(exports2) {
     "use strict";
     var applyReviver = require_applyReviver();
     var identity = require_identity();
@@ -610,9 +610,9 @@ var require_Node = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Alias.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Alias.js
 var require_Alias = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Alias.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Alias.js"(exports2) {
     "use strict";
     var anchors = require_anchors();
     var visit2 = require_visit();
@@ -728,9 +728,9 @@ var require_Alias = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Scalar.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Scalar.js
 var require_Scalar = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Scalar.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Scalar.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var Node = require_Node();
@@ -758,9 +758,9 @@ var require_Scalar = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/createNode.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/createNode.js
 var require_createNode = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/createNode.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/createNode.js"(exports2) {
     "use strict";
     var Alias = require_Alias();
     var identity = require_identity();
@@ -833,17 +833,17 @@ var require_createNode = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Collection.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Collection.js
 var require_Collection = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Collection.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Collection.js"(exports2) {
     "use strict";
     var createNode = require_createNode();
     var identity = require_identity();
     var Node = require_Node();
-    function collectionFromPath(schema, path12, value) {
+    function collectionFromPath(schema, path13, value) {
       let v = value;
-      for (let i = path12.length - 1; i >= 0; --i) {
-        const k = path12[i];
+      for (let i = path13.length - 1; i >= 0; --i) {
+        const k = path13[i];
         if (typeof k === "number" && Number.isInteger(k) && k >= 0) {
           const a = [];
           a[k] = v;
@@ -862,7 +862,7 @@ var require_Collection = __commonJS({
         sourceObjects: /* @__PURE__ */ new Map()
       });
     }
-    var isEmptyPath = (path12) => path12 == null || typeof path12 === "object" && !!path12[Symbol.iterator]().next().done;
+    var isEmptyPath = (path13) => path13 == null || typeof path13 === "object" && !!path13[Symbol.iterator]().next().done;
     var Collection = class extends Node.NodeBase {
       constructor(type, schema) {
         super(type);
@@ -892,11 +892,11 @@ var require_Collection = __commonJS({
        * be a Pair instance or a `{ key, value }` object, which may not have a key
        * that already exists in the map.
        */
-      addIn(path12, value) {
-        if (isEmptyPath(path12))
+      addIn(path13, value) {
+        if (isEmptyPath(path13))
           this.add(value);
         else {
-          const [key, ...rest] = path12;
+          const [key, ...rest] = path13;
           const node2 = this.get(key, true);
           if (identity.isCollection(node2))
             node2.addIn(rest, value);
@@ -910,8 +910,8 @@ var require_Collection = __commonJS({
        * Removes a value from the collection.
        * @returns `true` if the item was found and removed.
        */
-      deleteIn(path12) {
-        const [key, ...rest] = path12;
+      deleteIn(path13) {
+        const [key, ...rest] = path13;
         if (rest.length === 0)
           return this.delete(key);
         const node2 = this.get(key, true);
@@ -925,8 +925,8 @@ var require_Collection = __commonJS({
        * scalar values from their surrounding node; to disable set `keepScalar` to
        * `true` (collections are always returned intact).
        */
-      getIn(path12, keepScalar) {
-        const [key, ...rest] = path12;
+      getIn(path13, keepScalar) {
+        const [key, ...rest] = path13;
         const node2 = this.get(key, true);
         if (rest.length === 0)
           return !keepScalar && identity.isScalar(node2) ? node2.value : node2;
@@ -944,8 +944,8 @@ var require_Collection = __commonJS({
       /**
        * Checks if the collection includes a value with the key `key`.
        */
-      hasIn(path12) {
-        const [key, ...rest] = path12;
+      hasIn(path13) {
+        const [key, ...rest] = path13;
         if (rest.length === 0)
           return this.has(key);
         const node2 = this.get(key, true);
@@ -955,8 +955,8 @@ var require_Collection = __commonJS({
        * Sets a value in this collection. For `!!set`, `value` needs to be a
        * boolean to add/remove the item from the set.
        */
-      setIn(path12, value) {
-        const [key, ...rest] = path12;
+      setIn(path13, value) {
+        const [key, ...rest] = path13;
         if (rest.length === 0) {
           this.set(key, value);
         } else {
@@ -976,9 +976,9 @@ var require_Collection = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyComment.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyComment.js
 var require_stringifyComment = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyComment.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyComment.js"(exports2) {
     "use strict";
     var stringifyComment = (str) => str.replace(/^(?!$)(?: $)?/gm, "#");
     function indentComment(comment, indent) {
@@ -993,9 +993,9 @@ var require_stringifyComment = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/foldFlowLines.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/foldFlowLines.js
 var require_foldFlowLines = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/foldFlowLines.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/foldFlowLines.js"(exports2) {
     "use strict";
     var FOLD_FLOW = "flow";
     var FOLD_BLOCK = "block";
@@ -1129,9 +1129,9 @@ ${indent}${text.slice(fold + 1, end2)}`;
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyString.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyString.js
 var require_stringifyString = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyString.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyString.js"(exports2) {
     "use strict";
     var Scalar = require_Scalar();
     var foldFlowLines = require_foldFlowLines();
@@ -1412,9 +1412,9 @@ ${indent}`);
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringify.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringify.js
 var require_stringify = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringify.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringify.js"(exports2) {
     "use strict";
     var anchors = require_anchors();
     var identity = require_identity();
@@ -1536,9 +1536,9 @@ ${ctx.indent}${str}`;
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyPair.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyPair.js
 var require_stringifyPair = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyPair.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyPair.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var Scalar = require_Scalar();
@@ -1669,9 +1669,9 @@ ${ctx.indent}`;
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/log.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/log.js
 var require_log = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/log.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/log.js"(exports2) {
     "use strict";
     var node_process = require("process");
     function debug(logLevel, ...messages) {
@@ -1691,9 +1691,9 @@ var require_log = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/merge.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/merge.js
 var require_merge = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/merge.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/merge.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var Scalar = require_Scalar();
@@ -1751,9 +1751,9 @@ var require_merge = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/addPairToJSMap.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/addPairToJSMap.js
 var require_addPairToJSMap = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/addPairToJSMap.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/addPairToJSMap.js"(exports2) {
     "use strict";
     var log = require_log();
     var merge2 = require_merge();
@@ -1815,9 +1815,9 @@ var require_addPairToJSMap = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Pair.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Pair.js
 var require_Pair = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Pair.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/Pair.js"(exports2) {
     "use strict";
     var createNode = require_createNode();
     var stringifyPair = require_stringifyPair();
@@ -1855,9 +1855,9 @@ var require_Pair = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyCollection.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyCollection.js
 var require_stringifyCollection = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyCollection.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyCollection.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var stringify4 = require_stringify();
@@ -2006,9 +2006,9 @@ ${indent}${end}`;
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/YAMLMap.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/YAMLMap.js
 var require_YAMLMap = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/YAMLMap.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/YAMLMap.js"(exports2) {
     "use strict";
     var stringifyCollection = require_stringifyCollection();
     var addPairToJSMap = require_addPairToJSMap();
@@ -2150,9 +2150,9 @@ var require_YAMLMap = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/map.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/map.js
 var require_map = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/map.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/map.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var YAMLMap = require_YAMLMap();
@@ -2172,9 +2172,9 @@ var require_map = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/YAMLSeq.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/YAMLSeq.js
 var require_YAMLSeq = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/YAMLSeq.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/nodes/YAMLSeq.js"(exports2) {
     "use strict";
     var createNode = require_createNode();
     var stringifyCollection = require_stringifyCollection();
@@ -2288,9 +2288,9 @@ var require_YAMLSeq = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/seq.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/seq.js
 var require_seq = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/seq.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/seq.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var YAMLSeq = require_YAMLSeq();
@@ -2310,9 +2310,9 @@ var require_seq = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/string.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/string.js
 var require_string = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/string.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/string.js"(exports2) {
     "use strict";
     var stringifyString = require_stringifyString();
     var string4 = {
@@ -2329,9 +2329,9 @@ var require_string = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/null.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/null.js
 var require_null = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/null.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/common/null.js"(exports2) {
     "use strict";
     var Scalar = require_Scalar();
     var nullTag = {
@@ -2347,9 +2347,9 @@ var require_null = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/bool.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/bool.js
 var require_bool = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/bool.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/bool.js"(exports2) {
     "use strict";
     var Scalar = require_Scalar();
     var boolTag = {
@@ -2371,9 +2371,9 @@ var require_bool = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyNumber.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyNumber.js
 var require_stringifyNumber = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyNumber.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyNumber.js"(exports2) {
     "use strict";
     function stringifyNumber({ format, minFractionDigits, tag, value }) {
       if (typeof value === "bigint")
@@ -2398,9 +2398,9 @@ var require_stringifyNumber = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/float.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/float.js
 var require_float = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/float.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/float.js"(exports2) {
     "use strict";
     var Scalar = require_Scalar();
     var stringifyNumber = require_stringifyNumber();
@@ -2444,9 +2444,9 @@ var require_float = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/int.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/int.js
 var require_int = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/int.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/int.js"(exports2) {
     "use strict";
     var stringifyNumber = require_stringifyNumber();
     var intIdentify = (value) => typeof value === "bigint" || Number.isInteger(value);
@@ -2489,9 +2489,9 @@ var require_int = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/schema.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/schema.js
 var require_schema = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/schema.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/core/schema.js"(exports2) {
     "use strict";
     var map2 = require_map();
     var _null4 = require_null();
@@ -2517,9 +2517,9 @@ var require_schema = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/json/schema.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/json/schema.js
 var require_schema2 = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/json/schema.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/json/schema.js"(exports2) {
     "use strict";
     var Scalar = require_Scalar();
     var map2 = require_map();
@@ -2584,9 +2584,9 @@ var require_schema2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/binary.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/binary.js
 var require_binary = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/binary.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/binary.js"(exports2) {
     "use strict";
     var node_buffer = require("buffer");
     var Scalar = require_Scalar();
@@ -2650,9 +2650,9 @@ var require_binary = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/pairs.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/pairs.js
 var require_pairs = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/pairs.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/pairs.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var Pair = require_Pair();
@@ -2728,9 +2728,9 @@ ${cn.comment}` : item.comment;
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/omap.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/omap.js
 var require_omap = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/omap.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/omap.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var toJS = require_toJS();
@@ -2806,9 +2806,9 @@ var require_omap = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/bool.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/bool.js
 var require_bool2 = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/bool.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/bool.js"(exports2) {
     "use strict";
     var Scalar = require_Scalar();
     function boolStringify({ value, source }, ctx) {
@@ -2838,9 +2838,9 @@ var require_bool2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/float.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/float.js
 var require_float2 = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/float.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/float.js"(exports2) {
     "use strict";
     var Scalar = require_Scalar();
     var stringifyNumber = require_stringifyNumber();
@@ -2887,9 +2887,9 @@ var require_float2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/int.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/int.js
 var require_int2 = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/int.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/int.js"(exports2) {
     "use strict";
     var stringifyNumber = require_stringifyNumber();
     var intIdentify = (value) => typeof value === "bigint" || Number.isInteger(value);
@@ -2966,9 +2966,9 @@ var require_int2 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/set.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/set.js
 var require_set = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/set.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/set.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var Pair = require_Pair();
@@ -3055,9 +3055,9 @@ var require_set = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/timestamp.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/timestamp.js
 var require_timestamp = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/timestamp.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/timestamp.js"(exports2) {
     "use strict";
     var stringifyNumber = require_stringifyNumber();
     function parseSexagesimal(str, asBigInt) {
@@ -3143,9 +3143,9 @@ var require_timestamp = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/schema.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/schema.js
 var require_schema3 = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/schema.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/yaml-1.1/schema.js"(exports2) {
     "use strict";
     var map2 = require_map();
     var _null4 = require_null();
@@ -3187,9 +3187,9 @@ var require_schema3 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/tags.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/tags.js
 var require_tags = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/tags.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/tags.js"(exports2) {
     "use strict";
     var map2 = require_map();
     var _null4 = require_null();
@@ -3281,9 +3281,9 @@ var require_tags = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/Schema.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/Schema.js
 var require_Schema = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/Schema.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/schema/Schema.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var map2 = require_map();
@@ -3313,9 +3313,9 @@ var require_Schema = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyDocument.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyDocument.js
 var require_stringifyDocument = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyDocument.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/stringify/stringifyDocument.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var stringify4 = require_stringify();
@@ -3393,9 +3393,9 @@ var require_stringifyDocument = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/Document.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/Document.js
 var require_Document = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/Document.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/doc/Document.js"(exports2) {
     "use strict";
     var Alias = require_Alias();
     var Collection = require_Collection();
@@ -3471,9 +3471,9 @@ var require_Document = __commonJS({
           this.contents.add(value);
       }
       /** Adds a value to the document. */
-      addIn(path12, value) {
+      addIn(path13, value) {
         if (assertCollection(this.contents))
-          this.contents.addIn(path12, value);
+          this.contents.addIn(path13, value);
       }
       /**
        * Create a new `Alias` node, ensuring that the target `node` has the required anchor.
@@ -3548,14 +3548,14 @@ var require_Document = __commonJS({
        * Removes a value from the document.
        * @returns `true` if the item was found and removed.
        */
-      deleteIn(path12) {
-        if (Collection.isEmptyPath(path12)) {
+      deleteIn(path13) {
+        if (Collection.isEmptyPath(path13)) {
           if (this.contents == null)
             return false;
           this.contents = null;
           return true;
         }
-        return assertCollection(this.contents) ? this.contents.deleteIn(path12) : false;
+        return assertCollection(this.contents) ? this.contents.deleteIn(path13) : false;
       }
       /**
        * Returns item at `key`, or `undefined` if not found. By default unwraps
@@ -3570,10 +3570,10 @@ var require_Document = __commonJS({
        * scalar values from their surrounding node; to disable set `keepScalar` to
        * `true` (collections are always returned intact).
        */
-      getIn(path12, keepScalar) {
-        if (Collection.isEmptyPath(path12))
+      getIn(path13, keepScalar) {
+        if (Collection.isEmptyPath(path13))
           return !keepScalar && identity.isScalar(this.contents) ? this.contents.value : this.contents;
-        return identity.isCollection(this.contents) ? this.contents.getIn(path12, keepScalar) : void 0;
+        return identity.isCollection(this.contents) ? this.contents.getIn(path13, keepScalar) : void 0;
       }
       /**
        * Checks if the document includes a value with the key `key`.
@@ -3584,10 +3584,10 @@ var require_Document = __commonJS({
       /**
        * Checks if the document includes a value at `path`.
        */
-      hasIn(path12) {
-        if (Collection.isEmptyPath(path12))
+      hasIn(path13) {
+        if (Collection.isEmptyPath(path13))
           return this.contents !== void 0;
-        return identity.isCollection(this.contents) ? this.contents.hasIn(path12) : false;
+        return identity.isCollection(this.contents) ? this.contents.hasIn(path13) : false;
       }
       /**
        * Sets a value in this document. For `!!set`, `value` needs to be a
@@ -3604,13 +3604,13 @@ var require_Document = __commonJS({
        * Sets a value in this document. For `!!set`, `value` needs to be a
        * boolean to add/remove the item from the set.
        */
-      setIn(path12, value) {
-        if (Collection.isEmptyPath(path12)) {
+      setIn(path13, value) {
+        if (Collection.isEmptyPath(path13)) {
           this.contents = value;
         } else if (this.contents == null) {
-          this.contents = Collection.collectionFromPath(this.schema, Array.from(path12), value);
+          this.contents = Collection.collectionFromPath(this.schema, Array.from(path13), value);
         } else if (assertCollection(this.contents)) {
-          this.contents.setIn(path12, value);
+          this.contents.setIn(path13, value);
         }
       }
       /**
@@ -3702,9 +3702,9 @@ var require_Document = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/errors.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/errors.js
 var require_errors = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/errors.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/errors.js"(exports2) {
     "use strict";
     var YAMLError = class extends Error {
       constructor(name, pos, code, message) {
@@ -3767,9 +3767,9 @@ ${pointer}
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-props.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-props.js
 var require_resolve_props = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-props.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-props.js"(exports2) {
     "use strict";
     function resolveProps(tokens, { flow, indicator, next, offset, onError, parentIndent, startOnNewline }) {
       let spaceBefore = false;
@@ -3901,9 +3901,9 @@ var require_resolve_props = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-contains-newline.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-contains-newline.js
 var require_util_contains_newline = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-contains-newline.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-contains-newline.js"(exports2) {
     "use strict";
     function containsNewline(key) {
       if (!key)
@@ -3943,9 +3943,9 @@ var require_util_contains_newline = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-flow-indent-check.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-flow-indent-check.js
 var require_util_flow_indent_check = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-flow-indent-check.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-flow-indent-check.js"(exports2) {
     "use strict";
     var utilContainsNewline = require_util_contains_newline();
     function flowIndentCheck(indent, fc, onError) {
@@ -3961,9 +3961,9 @@ var require_util_flow_indent_check = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-map-includes.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-map-includes.js
 var require_util_map_includes = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-map-includes.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-map-includes.js"(exports2) {
     "use strict";
     var identity = require_identity();
     function mapIncludes(ctx, items, search2) {
@@ -3977,9 +3977,9 @@ var require_util_map_includes = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-block-map.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-block-map.js
 var require_resolve_block_map = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-block-map.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-block-map.js"(exports2) {
     "use strict";
     var Pair = require_Pair();
     var YAMLMap = require_YAMLMap();
@@ -4085,9 +4085,9 @@ var require_resolve_block_map = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-block-seq.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-block-seq.js
 var require_resolve_block_seq = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-block-seq.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-block-seq.js"(exports2) {
     "use strict";
     var YAMLSeq = require_YAMLSeq();
     var resolveProps = require_resolve_props();
@@ -4136,9 +4136,9 @@ var require_resolve_block_seq = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-end.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-end.js
 var require_resolve_end = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-end.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-end.js"(exports2) {
     "use strict";
     function resolveEnd(end, offset, reqSpace, onError) {
       let comment = "";
@@ -4179,9 +4179,9 @@ var require_resolve_end = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-flow-collection.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-flow-collection.js
 var require_resolve_flow_collection = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-flow-collection.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-flow-collection.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var Pair = require_Pair();
@@ -4373,9 +4373,9 @@ var require_resolve_flow_collection = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-collection.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-collection.js
 var require_compose_collection = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-collection.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-collection.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var Scalar = require_Scalar();
@@ -4438,9 +4438,9 @@ var require_compose_collection = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-block-scalar.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-block-scalar.js
 var require_resolve_block_scalar = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-block-scalar.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-block-scalar.js"(exports2) {
     "use strict";
     var Scalar = require_Scalar();
     function resolveBlockScalar(ctx, scalar, onError) {
@@ -4621,9 +4621,9 @@ var require_resolve_block_scalar = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-flow-scalar.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-flow-scalar.js
 var require_resolve_flow_scalar = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-flow-scalar.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/resolve-flow-scalar.js"(exports2) {
     "use strict";
     var Scalar = require_Scalar();
     var resolveEnd = require_resolve_end();
@@ -4842,9 +4842,9 @@ var require_resolve_flow_scalar = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-scalar.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-scalar.js
 var require_compose_scalar = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-scalar.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-scalar.js"(exports2) {
     "use strict";
     var identity = require_identity();
     var Scalar = require_Scalar();
@@ -4923,9 +4923,9 @@ var require_compose_scalar = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-empty-scalar-position.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-empty-scalar-position.js
 var require_util_empty_scalar_position = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-empty-scalar-position.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/util-empty-scalar-position.js"(exports2) {
     "use strict";
     function emptyScalarPosition(offset, before, pos) {
       if (before) {
@@ -4953,9 +4953,9 @@ var require_util_empty_scalar_position = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-node.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-node.js
 var require_compose_node = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-node.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-node.js"(exports2) {
     "use strict";
     var Alias = require_Alias();
     var identity = require_identity();
@@ -5059,9 +5059,9 @@ var require_compose_node = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-doc.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-doc.js
 var require_compose_doc = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-doc.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/compose-doc.js"(exports2) {
     "use strict";
     var Document = require_Document();
     var composeNode = require_compose_node();
@@ -5102,9 +5102,9 @@ var require_compose_doc = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/composer.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/composer.js
 var require_composer = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/composer.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/compose/composer.js"(exports2) {
     "use strict";
     var node_process = require("process");
     var directives = require_directives();
@@ -5310,9 +5310,9 @@ ${end.comment}` : end.comment;
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst-scalar.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst-scalar.js
 var require_cst_scalar = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst-scalar.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst-scalar.js"(exports2) {
     "use strict";
     var resolveBlockScalar = require_resolve_block_scalar();
     var resolveFlowScalar = require_resolve_flow_scalar();
@@ -5495,9 +5495,9 @@ var require_cst_scalar = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst-stringify.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst-stringify.js
 var require_cst_stringify = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst-stringify.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst-stringify.js"(exports2) {
     "use strict";
     var stringify4 = (cst) => "type" in cst ? stringifyToken(cst) : stringifyItem(cst);
     function stringifyToken(token) {
@@ -5556,9 +5556,9 @@ var require_cst_stringify = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst-visit.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst-visit.js
 var require_cst_visit = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst-visit.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst-visit.js"(exports2) {
     "use strict";
     var BREAK = /* @__PURE__ */ Symbol("break visit");
     var SKIP = /* @__PURE__ */ Symbol("skip children");
@@ -5571,9 +5571,9 @@ var require_cst_visit = __commonJS({
     visit2.BREAK = BREAK;
     visit2.SKIP = SKIP;
     visit2.REMOVE = REMOVE;
-    visit2.itemAtPath = (cst, path12) => {
+    visit2.itemAtPath = (cst, path13) => {
       let item = cst;
-      for (const [field, index] of path12) {
+      for (const [field, index] of path13) {
         const tok = item?.[field];
         if (tok && "items" in tok) {
           item = tok.items[index];
@@ -5582,23 +5582,23 @@ var require_cst_visit = __commonJS({
       }
       return item;
     };
-    visit2.parentCollection = (cst, path12) => {
-      const parent = visit2.itemAtPath(cst, path12.slice(0, -1));
-      const field = path12[path12.length - 1][0];
+    visit2.parentCollection = (cst, path13) => {
+      const parent = visit2.itemAtPath(cst, path13.slice(0, -1));
+      const field = path13[path13.length - 1][0];
       const coll = parent?.[field];
       if (coll && "items" in coll)
         return coll;
       throw new Error("Parent collection not found");
     };
-    function _visit(path12, item, visitor) {
-      let ctrl = visitor(item, path12);
+    function _visit(path13, item, visitor) {
+      let ctrl = visitor(item, path13);
       if (typeof ctrl === "symbol")
         return ctrl;
       for (const field of ["key", "value"]) {
         const token = item[field];
         if (token && "items" in token) {
           for (let i = 0; i < token.items.length; ++i) {
-            const ci = _visit(Object.freeze(path12.concat([[field, i]])), token.items[i], visitor);
+            const ci = _visit(Object.freeze(path13.concat([[field, i]])), token.items[i], visitor);
             if (typeof ci === "number")
               i = ci - 1;
             else if (ci === BREAK)
@@ -5609,18 +5609,18 @@ var require_cst_visit = __commonJS({
             }
           }
           if (typeof ctrl === "function" && field === "key")
-            ctrl = ctrl(item, path12);
+            ctrl = ctrl(item, path13);
         }
       }
-      return typeof ctrl === "function" ? ctrl(item, path12) : ctrl;
+      return typeof ctrl === "function" ? ctrl(item, path13) : ctrl;
     }
     exports2.visit = visit2;
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst.js
 var require_cst = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/cst.js"(exports2) {
     "use strict";
     var cstScalar = require_cst_scalar();
     var cstStringify = require_cst_stringify();
@@ -5720,9 +5720,9 @@ var require_cst = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/lexer.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/lexer.js
 var require_lexer = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/lexer.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/lexer.js"(exports2) {
     "use strict";
     var cst = require_cst();
     function isEmpty(ch) {
@@ -6309,9 +6309,9 @@ var require_lexer = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/line-counter.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/line-counter.js
 var require_line_counter = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/line-counter.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/line-counter.js"(exports2) {
     "use strict";
     var LineCounter = class {
       constructor() {
@@ -6340,9 +6340,9 @@ var require_line_counter = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/parser.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/parser.js
 var require_parser = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/parser.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/parse/parser.js"(exports2) {
     "use strict";
     var node_process = require("process");
     var cst = require_cst();
@@ -7214,9 +7214,9 @@ var require_parser = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/public-api.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/public-api.js
 var require_public_api = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/public-api.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/public-api.js"(exports2) {
     "use strict";
     var composer = require_composer();
     var Document = require_Document();
@@ -7311,9 +7311,9 @@ var require_public_api = __commonJS({
   }
 });
 
-// node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/index.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/index.js
 var require_dist = __commonJS({
-  "node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/index.js"(exports2) {
+  "../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/dist/index.js"(exports2) {
     "use strict";
     var composer = require_composer();
     var Document = require_Document();
@@ -7364,17 +7364,17 @@ var require_dist = __commonJS({
 });
 
 // src/cli/main.ts
-var import_promises11 = require("node:fs/promises");
-var import_node_path11 = __toESM(require("node:path"), 1);
+var import_promises12 = require("node:fs/promises");
+var import_node_path12 = __toESM(require("node:path"), 1);
 var import_node_os = require("node:os");
 
 // src/tools/handlers.ts
-var import_promises10 = require("node:fs/promises");
-var import_node_path9 = __toESM(require("node:path"), 1);
+var import_promises11 = require("node:fs/promises");
+var import_node_path10 = __toESM(require("node:path"), 1);
 var import_node_crypto7 = require("node:crypto");
 var import_yaml6 = __toESM(require_dist(), 1);
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/external.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/external.js
 var external_exports = {};
 __export(external_exports, {
   $brand: () => $brand,
@@ -7637,7 +7637,7 @@ __export(external_exports, {
   xor: () => xor
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/index.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/index.js
 var core_exports2 = {};
 __export(core_exports2, {
   $ZodAny: () => $ZodAny,
@@ -7954,7 +7954,7 @@ __export(core_exports2, {
   withParser: () => withParser
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/util.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/util.js
 var util_exports = {};
 __export(util_exports, {
   BIGINT_FORMAT_RANGES: () => BIGINT_FORMAT_RANGES,
@@ -8190,10 +8190,10 @@ function mergeDefs(...defs) {
 function cloneDef(schema) {
   return mergeDefs(schema._zod.def);
 }
-function getElementAtPath(obj, path12) {
-  if (!path12)
+function getElementAtPath(obj, path13) {
+  if (!path13)
     return obj;
-  return path12.reduce((acc, key) => acc?.[key], obj);
+  return path13.reduce((acc, key) => acc?.[key], obj);
 }
 function promiseAllObject(promisesObj) {
   const keys = Object.keys(promisesObj);
@@ -8533,11 +8533,11 @@ function explicitlyAborted(x, startIndex = 0) {
   }
   return false;
 }
-function prefixIssues(path12, issues) {
+function prefixIssues(path13, issues) {
   return issues.map((iss) => {
     var _a3;
     (_a3 = iss).path ?? (_a3.path = []);
-    iss.path.unshift(path12);
+    iss.path.unshift(path13);
     return iss;
   });
 }
@@ -8797,7 +8797,7 @@ function constantCatch(value) {
   return fn;
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/core.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/core.js
 var _a;
 var NEVER = /* @__PURE__ */ Object.freeze({
   status: "aborted"
@@ -8919,7 +8919,7 @@ function config(newConfig) {
   return globalConfig;
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/errors.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/errors.js
 function _getMessage() {
   const internals = this._zod;
   internals.message ?? (internals.message = JSON.stringify(internals.def, jsonStringifyReplacer, 2));
@@ -8987,16 +8987,16 @@ function flattenError(error62, mapper = (issue2) => issue2.message) {
 }
 function formatError(error62, mapper = (issue2) => issue2.message) {
   const fieldErrors = { _errors: [] };
-  const processError = (error63, path12 = []) => {
+  const processError = (error63, path13 = []) => {
     for (const issue2 of error63.issues) {
       if (issue2.code === "invalid_union" && issue2.errors.length) {
-        issue2.errors.map((issues) => processError({ issues }, [...path12, ...issue2.path]));
+        issue2.errors.map((issues) => processError({ issues }, [...path13, ...issue2.path]));
       } else if (issue2.code === "invalid_key") {
-        processError({ issues: issue2.issues }, [...path12, ...issue2.path]);
+        processError({ issues: issue2.issues }, [...path13, ...issue2.path]);
       } else if (issue2.code === "invalid_element") {
-        processError({ issues: issue2.issues }, [...path12, ...issue2.path]);
+        processError({ issues: issue2.issues }, [...path13, ...issue2.path]);
       } else {
-        const fullpath = [...path12, ...issue2.path];
+        const fullpath = [...path13, ...issue2.path];
         if (fullpath.length === 0) {
           fieldErrors._errors.push(mapper(issue2));
         } else {
@@ -9035,17 +9035,17 @@ function formatError(error62, mapper = (issue2) => issue2.message) {
 }
 function treeifyError(error62, mapper = (issue2) => issue2.message) {
   const result = { errors: [] };
-  const processError = (error63, path12 = []) => {
+  const processError = (error63, path13 = []) => {
     var _a3;
     for (const issue2 of error63.issues) {
       if (issue2.code === "invalid_union" && issue2.errors.length) {
-        issue2.errors.map((issues) => processError({ issues }, [...path12, ...issue2.path]));
+        issue2.errors.map((issues) => processError({ issues }, [...path13, ...issue2.path]));
       } else if (issue2.code === "invalid_key") {
-        processError({ issues: issue2.issues }, [...path12, ...issue2.path]);
+        processError({ issues: issue2.issues }, [...path13, ...issue2.path]);
       } else if (issue2.code === "invalid_element") {
-        processError({ issues: issue2.issues }, [...path12, ...issue2.path]);
+        processError({ issues: issue2.issues }, [...path13, ...issue2.path]);
       } else {
-        const fullpath = [...path12, ...issue2.path];
+        const fullpath = [...path13, ...issue2.path];
         if (fullpath.length === 0) {
           result.errors.push(mapper(issue2));
           continue;
@@ -9084,8 +9084,8 @@ function treeifyError(error62, mapper = (issue2) => issue2.message) {
 }
 function toDotPath(_path) {
   const segs = [];
-  const path12 = _path.map((seg) => typeof seg === "object" ? seg.key : seg);
-  for (const seg of path12) {
+  const path13 = _path.map((seg) => typeof seg === "object" ? seg.key : seg);
+  for (const seg of path13) {
     if (typeof seg === "number")
       segs.push(`[${seg}]`);
     else if (typeof seg === "symbol")
@@ -9111,7 +9111,7 @@ function prettifyError(error62) {
   return lines.join("\n");
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/parse.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/parse.js
 function finalizeParams(callee, params) {
   return { callee: params?.callee ?? callee, Err: params?.Err };
 }
@@ -9271,7 +9271,7 @@ var _safeDecodeAsync = (_Err) => async (schema, value, _ctx) => {
 };
 var safeDecodeAsync = /* @__PURE__ */ _safeDecodeAsync($ZodRealError);
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/regexes.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/regexes.js
 var regexes_exports = {};
 __export(regexes_exports, {
   anyString: () => anyString,
@@ -9443,7 +9443,7 @@ var sha512_hex = /^[0-9a-fA-F]{128}$/;
 var sha512_base64 = /* @__PURE__ */ fixedBase64(86, "==");
 var sha512_base64url = /* @__PURE__ */ fixedBase64url(86);
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/checks.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/checks.js
 var $ZodCheck = /* @__PURE__ */ $constructor("$ZodCheck", (inst, def) => {
   var _a3;
   inst._zod ?? (inst._zod = {});
@@ -9919,7 +9919,7 @@ var $ZodCheckOverwrite = /* @__PURE__ */ $constructor("$ZodCheckOverwrite", (ins
   };
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/doc.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/doc.js
 var Doc = class {
   constructor(args = [], closed = {}) {
     this.content = [];
@@ -9960,14 +9960,14 @@ ${content.join("\n")}
   }
 };
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/versions.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/versions.js
 var version = {
   major: 4,
   minor: 6,
   patch: 5
 };
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/schemas.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/schemas.js
 var $ZodType = /* @__PURE__ */ $constructor("$ZodType", (inst, def) => {
   var _a3;
   inst ?? (inst = {});
@@ -12381,7 +12381,7 @@ function handleRefineResult(result, payload, input2, inst) {
   }
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/memoizer.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/memoizer.js
 var $ZodCyclicError = class extends Error {
   constructor() {
     super(`Cannot parse a reference cycle that closes through a transform`);
@@ -12658,7 +12658,7 @@ function isBackEdge(ctx, value) {
   return backEdges !== void 0 && isRef(value) && backEdges.has(value);
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/index.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/index.js
 var locales_exports = {};
 __export(locales_exports, {
   ar: () => ar_default,
@@ -12726,7 +12726,7 @@ __export(locales_exports, {
   zhTW: () => zh_TW_default
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ar.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ar.js
 var error = () => {
   const Sizable = {
     string: { unit: "\u062D\u0631\u0641", verb: "\u0623\u0646 \u064A\u062D\u0648\u064A" },
@@ -12838,7 +12838,7 @@ function ar_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/az.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/az.js
 var error2 = () => {
   const Sizable = {
     string: { unit: "simvol", verb: "olmal\u0131d\u0131r" },
@@ -12949,7 +12949,7 @@ function az_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/be.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/be.js
 function getBelarusianPlural(count, one, few, many) {
   const absCount = Math.abs(count);
   const lastDigit = absCount % 10;
@@ -13118,7 +13118,7 @@ function be_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/bg.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/bg.js
 var error4 = () => {
   const Sizable = {
     string: { unit: "\u0441\u0438\u043C\u0432\u043E\u043B\u0430", verb: "\u0434\u0430 \u0441\u044A\u0434\u044A\u0440\u0436\u0430" },
@@ -13244,7 +13244,7 @@ function bg_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/bn.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/bn.js
 var error5 = () => {
   const Sizable = {
     string: { unit: "\u0985\u0995\u09CD\u09B7\u09B0", verb: "\u09A5\u09BE\u0995\u09A4\u09C7 \u09B9\u09AC\u09C7" },
@@ -13358,7 +13358,7 @@ function bn_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ca.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ca.js
 var error6 = () => {
   const Sizable = {
     string: { unit: "car\xE0cters", verb: "contenir" },
@@ -13472,7 +13472,7 @@ function ca_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ckb.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ckb.js
 var error7 = () => {
   const Sizable = {
     string: { unit: "\u067E\u06CC\u062A", verb: "\u0628\u06CE\u062A" },
@@ -13605,7 +13605,7 @@ function ckb_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/cs.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/cs.js
 var error8 = () => {
   const Sizable = {
     string: { unit: "znak\u016F", verb: "m\xEDt" },
@@ -13722,7 +13722,7 @@ function cs_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/da.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/da.js
 var error9 = () => {
   const Sizable = {
     string: { unit: "tegn", verb: "havde" },
@@ -13843,7 +13843,7 @@ function da_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/de.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/de.js
 var error10 = () => {
   const Sizable = {
     string: { unit: "Zeichen", verb: "zu haben" },
@@ -13957,7 +13957,7 @@ function de_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/el.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/el.js
 var error11 = () => {
   const Sizable = {
     string: { unit: "\u03C7\u03B1\u03C1\u03B1\u03BA\u03C4\u03AE\u03C1\u03B5\u03C2", verb: "\u03BD\u03B1 \u03AD\u03C7\u03B5\u03B9" },
@@ -14070,7 +14070,7 @@ function el_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/en.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/en.js
 var error12 = () => {
   const Sizable = {
     string: { unit: "characters", verb: "to have" },
@@ -14195,7 +14195,7 @@ function en_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/eo.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/eo.js
 var error13 = () => {
   const Sizable = {
     string: { unit: "karaktrojn", verb: "havi" },
@@ -14310,7 +14310,7 @@ function eo_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/es.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/es.js
 var error14 = () => {
   const Sizable = {
     string: { unit: "caracteres", verb: "tener" },
@@ -14447,7 +14447,7 @@ function es_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fa.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fa.js
 var error15 = () => {
   const Sizable = {
     string: { unit: "\u06A9\u0627\u0631\u0627\u06A9\u062A\u0631", verb: "\u062F\u0627\u0634\u062A\u0647 \u0628\u0627\u0634\u062F" },
@@ -14567,7 +14567,7 @@ function fa_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fi.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fi.js
 var error16 = () => {
   const Sizable = {
     string: { unit: "merkki\xE4", subject: "merkkijonon" },
@@ -14685,7 +14685,7 @@ function fi_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fr.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fr.js
 var error17 = () => {
   const Sizable = {
     string: { unit: "caract\xE8res", verb: "avoir" },
@@ -14815,7 +14815,7 @@ function fr_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fr-CA.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/fr-CA.js
 var error18 = () => {
   const Sizable = {
     string: { unit: "caract\xE8res", verb: "avoir" },
@@ -14928,7 +14928,7 @@ function fr_CA_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/gu.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/gu.js
 var error19 = () => {
   const Sizable = {
     string: { unit: "\u0A85\u0A95\u0ACD\u0AB7\u0AB0", verb: "\u0AB9\u0ACB\u0AB5\u0ABE \u0A9C\u0ACB\u0A88\u0A8F" },
@@ -15042,7 +15042,7 @@ function gu_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/he.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/he.js
 var error20 = () => {
   const TypeNames = {
     string: { label: "\u05DE\u05D7\u05E8\u05D5\u05D6\u05EA", gender: "f" },
@@ -15244,7 +15244,7 @@ function he_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hi.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hi.js
 var error21 = () => {
   const Sizable = {
     string: { unit: "\u0905\u0915\u094D\u0937\u0930", verb: "\u0930\u0916\u0928\u0947 \u0915\u0947 \u0932\u093F\u090F" },
@@ -15356,7 +15356,7 @@ function hi_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hr.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hr.js
 var error22 = () => {
   const Sizable = {
     string: { unit: "znakova", verb: "imati" },
@@ -15483,7 +15483,7 @@ function hr_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hu.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hu.js
 var error23 = () => {
   const Sizable = {
     string: { unit: "karakter", verb: "legyen" },
@@ -15597,7 +15597,7 @@ function hu_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hy.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/hy.js
 function getArmenianPlural(count, one, many) {
   return Math.abs(count) === 1 ? one : many;
 }
@@ -15756,7 +15756,7 @@ function hy_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/id.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/id.js
 var error25 = () => {
   const Sizable = {
     string: { unit: "karakter", verb: "memiliki" },
@@ -15868,7 +15868,7 @@ function id_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/is.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/is.js
 var error26 = () => {
   const Sizable = {
     string: { unit: "stafi", verb: "a\xF0 hafa" },
@@ -15983,7 +15983,7 @@ function is_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/it.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/it.js
 var error27 = () => {
   const Sizable = {
     string: { unit: "caratteri", verb: "avere" },
@@ -16097,7 +16097,7 @@ function it_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ja.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ja.js
 var error28 = () => {
   const Sizable = {
     string: { unit: "\u6587\u5B57", verb: "\u3067\u3042\u308B" },
@@ -16210,7 +16210,7 @@ function ja_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ka.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ka.js
 var error29 = () => {
   const Sizable = {
     string: { unit: "\u10E1\u10D8\u10DB\u10D1\u10DD\u10DA\u10DD", verb: "\u10E3\u10DC\u10D3\u10D0 \u10E8\u10D4\u10D8\u10EA\u10D0\u10D5\u10D3\u10D4\u10E1" },
@@ -16328,7 +16328,7 @@ function ka_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/km.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/km.js
 var error30 = () => {
   const Sizable = {
     string: { unit: "\u178F\u17BD\u17A2\u1780\u17D2\u179F\u179A", verb: "\u1782\u17BD\u179A\u1798\u17B6\u1793" },
@@ -16444,12 +16444,12 @@ function km_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/kh.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/kh.js
 function kh_default() {
   return km_default();
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/kn.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/kn.js
 var error31 = () => {
   const Sizable = {
     string: { unit: "\u0C85\u0C95\u0CCD\u0CB7\u0CB0\u0C97\u0CB3\u0CC1", verb: "\u0CB9\u0CCA\u0C82\u0CA6\u0CB2\u0CC1" },
@@ -16565,7 +16565,7 @@ function kn_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ko.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ko.js
 var error32 = () => {
   const Sizable = {
     string: { unit: "\uBB38\uC790", verb: "to have" },
@@ -16682,7 +16682,7 @@ function ko_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/lt.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/lt.js
 var capitalizeFirstCharacter = (text) => {
   return text.charAt(0).toUpperCase() + text.slice(1);
 };
@@ -16890,7 +16890,7 @@ function lt_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/mk.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/mk.js
 var error34 = () => {
   const Sizable = {
     string: { unit: "\u0437\u043D\u0430\u0446\u0438", verb: "\u0434\u0430 \u0438\u043C\u0430\u0430\u0442" },
@@ -17005,7 +17005,7 @@ function mk_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ms.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ms.js
 var error35 = () => {
   const Sizable = {
     string: { unit: "aksara", verb: "mempunyai" },
@@ -17118,7 +17118,7 @@ function ms_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ne.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ne.js
 var error36 = () => {
   const Sizable = {
     string: { unit: "\u0905\u0915\u094D\u0937\u0930", verb: "\u0939\u0941\u0928\u0941\u092A\u0930\u094D\u091B" },
@@ -17230,7 +17230,7 @@ function ne_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/nl.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/nl.js
 var error37 = () => {
   const Sizable = {
     string: { unit: "tekens", verb: "heeft" },
@@ -17346,7 +17346,7 @@ function nl_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/nn.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/nn.js
 var error38 = () => {
   const Sizable = {
     string: { unit: "teikn", verb: "\xE5 ha" },
@@ -17460,7 +17460,7 @@ function nn_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/no.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/no.js
 var error39 = () => {
   const Sizable = {
     string: { unit: "tegn", verb: "\xE5 ha" },
@@ -17574,7 +17574,7 @@ function no_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ota.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ota.js
 var error40 = () => {
   const Sizable = {
     string: { unit: "harf", verb: "olmal\u0131d\u0131r" },
@@ -17689,7 +17689,7 @@ function ota_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ps.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ps.js
 var error41 = () => {
   const Sizable = {
     string: { unit: "\u062A\u0648\u06A9\u064A", verb: "\u0648\u0644\u0631\u064A" },
@@ -17809,7 +17809,7 @@ function ps_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pl.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pl.js
 var error42 = () => {
   const Sizable = {
     string: { unit: "znak\xF3w", verb: "mie\u0107" },
@@ -17924,7 +17924,7 @@ function pl_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pt.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pt.js
 var error43 = () => {
   const Sizable = {
     string: { unit: "caracteres" },
@@ -18068,7 +18068,7 @@ function pt_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pt-BR.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/pt-BR.js
 var error44 = () => {
   const Sizable = {
     string: { unit: "caracteres" },
@@ -18213,7 +18213,7 @@ function pt_BR_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ro.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ro.js
 var error45 = () => {
   const Sizable = {
     string: { unit: "caractere", verb: "s\u0103 aib\u0103" },
@@ -18336,7 +18336,7 @@ function ro_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ru.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ru.js
 function getRussianPlural(count, one, few, many) {
   const absCount = Math.abs(count);
   const lastDigit = absCount % 10;
@@ -18505,7 +18505,7 @@ function ru_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sk.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sk.js
 var error47 = () => {
   const Sizable = {
     string: { unit: "znakov", verb: "ma\u0165" },
@@ -18622,7 +18622,7 @@ function sk_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sl.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sl.js
 var error48 = () => {
   const Sizable = {
     string: { unit: "znakov", verb: "imeti" },
@@ -18737,7 +18737,7 @@ function sl_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sv.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/sv.js
 var error49 = () => {
   const Sizable = {
     string: { unit: "tecken", verb: "att ha" },
@@ -18853,7 +18853,7 @@ function sv_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ta.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ta.js
 var error50 = () => {
   const Sizable = {
     string: { unit: "\u0B8E\u0BB4\u0BC1\u0BA4\u0BCD\u0BA4\u0BC1\u0B95\u0BCD\u0B95\u0BB3\u0BCD", verb: "\u0B95\u0BCA\u0BA3\u0BCD\u0B9F\u0BBF\u0BB0\u0BC1\u0B95\u0BCD\u0B95 \u0BB5\u0BC7\u0BA3\u0BCD\u0B9F\u0BC1\u0BAE\u0BCD" },
@@ -18969,7 +18969,7 @@ function ta_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tg.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tg.js
 var error51 = () => {
   const Sizable = {
     string: { unit: "\u0430\u043B\u043E\u043C\u0430\u0442", verb: "\u0434\u043E\u0448\u0442\u0430 \u0431\u043E\u0448\u0430\u0434" },
@@ -19086,7 +19086,7 @@ function tg_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/th.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/th.js
 var error52 = () => {
   const Sizable = {
     string: { unit: "\u0E15\u0E31\u0E27\u0E2D\u0E31\u0E01\u0E29\u0E23", verb: "\u0E04\u0E27\u0E23\u0E21\u0E35" },
@@ -19202,7 +19202,7 @@ function th_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tk.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tk.js
 var error53 = () => {
   const Sizable = {
     string: { unit: "simwol", verb: "bolmaly" },
@@ -19310,7 +19310,7 @@ function tk_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tr.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/tr.js
 var error54 = () => {
   const Sizable = {
     string: { unit: "karakter", verb: "olmal\u0131" },
@@ -19421,7 +19421,7 @@ function tr_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/uk.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/uk.js
 var error55 = () => {
   const Sizable = {
     string: { unit: "\u0441\u0438\u043C\u0432\u043E\u043B\u0456\u0432", verb: "\u043C\u0430\u0442\u0438\u043C\u0435" },
@@ -19535,12 +19535,12 @@ function uk_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ua.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ua.js
 function ua_default() {
   return uk_default();
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ur.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/ur.js
 var error56 = () => {
   const Sizable = {
     string: { unit: "\u062D\u0631\u0648\u0641", verb: "\u06C1\u0648\u0646\u0627" },
@@ -19656,7 +19656,7 @@ function ur_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/uz.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/uz.js
 var error57 = () => {
   const Sizable = {
     string: { unit: "belgi", verb: "bo\u2018lishi kerak" },
@@ -19770,7 +19770,7 @@ function uz_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/vi.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/vi.js
 var error58 = () => {
   const Sizable = {
     string: { unit: "k\xFD t\u1EF1", verb: "c\xF3" },
@@ -19884,7 +19884,7 @@ function vi_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/zh-CN.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/zh-CN.js
 var error59 = () => {
   const Sizable = {
     string: { unit: "\u5B57\u7B26", verb: "\u5305\u542B" },
@@ -19999,7 +19999,7 @@ function zh_CN_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/zh-TW.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/zh-TW.js
 var error60 = () => {
   const Sizable = {
     string: { unit: "\u5B57\u5143", verb: "\u64C1\u6709" },
@@ -20112,7 +20112,7 @@ function zh_TW_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/yo.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/locales/yo.js
 var error61 = () => {
   const Sizable = {
     string: { unit: "\xE0mi", verb: "n\xED" },
@@ -20225,7 +20225,7 @@ function yo_default() {
   };
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/registries.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/registries.js
 var _a2;
 var $output = /* @__PURE__ */ Symbol("ZodOutput");
 var $input = /* @__PURE__ */ Symbol("ZodInput");
@@ -20275,7 +20275,7 @@ function registry() {
 (_a2 = globalThis).__zod_globalRegistry ?? (_a2.__zod_globalRegistry = registry());
 var globalRegistry = globalThis.__zod_globalRegistry;
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/compile.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/compile.js
 var INVALID = /* @__PURE__ */ Symbol.for("zod.compile.invalid");
 var FALLBACK_FLAG = /* @__PURE__ */ Symbol.for("zod.compile.fallback");
 var ZodCompileAsyncError = class extends Error {
@@ -21877,7 +21877,7 @@ function generateTransformCheck(doc, ctx, schema, accessor) {
   return accessor;
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/api.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/api.js
 function snapshotChecks(def) {
   if (def.checks)
     def.checks = [...def.checks];
@@ -22936,7 +22936,7 @@ function _stringFormat(Class2, format, fnOrRegex, _params = {}) {
   return inst;
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/to-json-schema.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/to-json-schema.js
 function assignProps(target, ...sources) {
   for (const source of sources) {
     for (const key of Reflect.ownKeys(source)) {
@@ -23466,7 +23466,7 @@ var createStandardJSONSchemaMethod = (schema, io, processors = {}) => (params) =
   return finalize(ctx, schema);
 };
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema-processors.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema-processors.js
 var narrowMin = (agg, key, value) => {
   if (agg[key] === void 0 || value > agg[key])
     agg[key] = value;
@@ -24214,7 +24214,7 @@ function toJSONSchema(input2, params) {
   return finalize(ctx, input2);
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema-generator.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema-generator.js
 var JSONSchemaGenerator = class {
   /** @deprecated Access via ctx instead */
   get metadataRegistry() {
@@ -24292,10 +24292,10 @@ var JSONSchemaGenerator = class {
   }
 };
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/json-schema.js
 var json_schema_exports = {};
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/schemas.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/schemas.js
 var schemas_exports2 = {};
 __export(schemas_exports2, {
   ZodAny: () => ZodAny,
@@ -24476,7 +24476,7 @@ __export(schemas_exports2, {
   xor: () => xor
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/checks.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/checks.js
 var checks_exports2 = {};
 __export(checks_exports2, {
   endsWith: () => _endsWith,
@@ -24511,7 +24511,7 @@ __export(checks_exports2, {
   uppercase: () => _uppercase
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/errors.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/errors.js
 var _installedErrorProtos = /* @__PURE__ */ new WeakSet([Object.prototype, Error.prototype]);
 function _lazyMethod(proto, key, make) {
   Object.defineProperty(proto, key, {
@@ -24557,7 +24557,7 @@ var ZodRealError = /* @__PURE__ */ $constructor("ZodError", initializer2, void 0
   Parent: Error
 });
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/parse.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/parse.js
 var parse2 = /* @__PURE__ */ _parse(ZodRealError);
 var parseAsync2 = /* @__PURE__ */ _parseAsync(ZodRealError);
 var safeParse2 = /* @__PURE__ */ _safeParse(ZodRealError);
@@ -24571,7 +24571,7 @@ var safeDecode2 = /* @__PURE__ */ _safeDecode(ZodRealError);
 var safeEncodeAsync2 = /* @__PURE__ */ _safeEncodeAsync(ZodRealError);
 var safeDecodeAsync2 = /* @__PURE__ */ _safeDecodeAsync(ZodRealError);
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/schemas.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/schemas.js
 function _ensureDefaultLocale() {
   if (!globalConfig.localeError)
     config(en_default());
@@ -26036,7 +26036,7 @@ function preprocess(fn, schema) {
   });
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/compat.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/compat.js
 var ZodIssueCode = {
   invalid_type: "invalid_type",
   too_big: "too_big",
@@ -26062,7 +26062,7 @@ var ZodFirstPartyTypeKind;
 /* @__PURE__ */ (function(ZodFirstPartyTypeKind2) {
 })(ZodFirstPartyTypeKind || (ZodFirstPartyTypeKind = {}));
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/iso.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/iso.js
 var iso_exports = {};
 __export(iso_exports, {
   ZodISODate: () => ZodISODate,
@@ -26087,7 +26087,7 @@ function duration2(params) {
   return _isoDuration(ZodISODuration, params);
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/from-json-schema.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/from-json-schema.js
 var z = {
   ...schemas_exports2,
   ...checks_exports2,
@@ -26187,13 +26187,13 @@ function resolveRef(ref, ctx) {
   if (!ref.startsWith("#")) {
     throw new Error("External $ref is not supported, only local refs (#/...) are allowed");
   }
-  const path12 = ref.slice(1).split("/").filter(Boolean);
-  if (path12.length === 0) {
+  const path13 = ref.slice(1).split("/").filter(Boolean);
+  if (path13.length === 0) {
     return ctx.rootSchema;
   }
   const defsKey = ctx.version === "draft-2020-12" ? "$defs" : "definitions";
-  if (path12[0] === defsKey) {
-    const key = path12[1] === void 0 ? void 0 : decodeJSONPointerSegment(path12[1]);
+  if (path13[0] === defsKey) {
+    const key = path13[1] === void 0 ? void 0 : decodeJSONPointerSegment(path13[1]);
     if (!key || !ctx.defs[key]) {
       throw new Error(`Reference not found: ${ref}`);
     }
@@ -26820,7 +26820,7 @@ function fromJSONSchema(schema, params) {
   return convertSchema(normalized, ctx);
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/visit.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/core/visit.js
 var RESOLVING = /* @__PURE__ */ Symbol("z.visit/resolving");
 function visit(schema, fnOrHandlers) {
   const fn = typeof fnOrHandlers === "function" ? fnOrHandlers : (node2, rewritten) => {
@@ -26975,7 +26975,7 @@ function visit(schema, fnOrHandlers) {
   return run2(schema);
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/deep-partial.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/deep-partial.js
 function deepPartial(schema) {
   return visit(schema, {
     object: (s) => s.partial(),
@@ -26987,7 +26987,7 @@ function deepPartial(schema) {
   });
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/in-out.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/in-out.js
 function withChecks(side, checks) {
   if (!checks?.length)
     return side;
@@ -27017,7 +27017,7 @@ function output(schema) {
   });
 }
 
-// node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/coerce.js
+// ../../../obsidian-knowledge-graph-plugin/node_modules/.pnpm/zod@4.6.5/node_modules/zod/v4/classic/coerce.js
 var coerce_exports = {};
 __export(coerce_exports, {
   bigint: () => bigint3,
@@ -27069,7 +27069,7 @@ var ConfigSchema = external_exports.object({
   search: external_exports.object({ limit: external_exports.number().int().min(1).max(10), default_hops: external_exports.number().int().min(1).max(2), max_hops: external_exports.number().int().max(2), max_nodes: external_exports.number().int().min(1).max(20) }).optional(),
   read: external_exports.object({ default_chars: external_exports.number().int().min(1).max(8e3), max_chars: external_exports.number().int().min(1).max(8e3) }).optional()
 }).strict();
-var VersionSchema = external_exports.object({ revision: external_exports.number().int().positive(), raw_path: external_exports.string(), original_name: external_exports.string(), document_status: external_exports.enum(["draft", "final", "submitted"]).optional(), occurred_on: external_exports.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(), sha256: external_exports.string().regex(/^[a-f0-9]{64}$/), byte_length: external_exports.number().int().nonnegative(), extraction: external_exports.enum(["text", "unsupported", "provided"]), state: external_exports.enum(["inbox", "organized"]), summary_id: UUID.optional(), summary_path: external_exports.string().optional(), extracted_path: external_exports.string().optional(), extracted_sha256: external_exports.string().regex(/^[a-f0-9]{64}$/).optional(), extractor: external_exports.string().optional() }).strict();
+var VersionSchema = external_exports.object({ revision: external_exports.number().int().positive(), raw_path: external_exports.string(), inbox_origin: external_exports.string().optional(), parent_revision: external_exports.number().int().positive().optional(), original_name: external_exports.string(), document_status: external_exports.enum(["draft", "final", "submitted"]).optional(), occurred_on: external_exports.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(), sha256: external_exports.string().regex(/^[a-f0-9]{64}$/), byte_length: external_exports.number().int().nonnegative(), extraction: external_exports.enum(["text", "unsupported", "provided"]), state: external_exports.enum(["inbox", "organized"]), summary_id: UUID.optional(), summary_path: external_exports.string().optional(), extracted_path: external_exports.string().optional(), extracted_sha256: external_exports.string().regex(/^[a-f0-9]{64}$/).optional(), extractor: external_exports.string().optional() }).strict();
 var RecordSchema = external_exports.object({ schema_version: external_exports.literal(1), record_id: UUID, title: external_exports.string().min(1).max(200), record_type: RecordType, document_status: external_exports.enum(["draft", "final", "submitted"]).default("final"), occurred_on: external_exports.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(), captured_at: external_exports.iso.datetime({ offset: true }), latest_revision: external_exports.number().int().positive(), policy: Policy, versions: external_exports.array(VersionSchema).min(1) }).strict();
 var EvidenceSchema = external_exports.object({ record_id: UUID, revision: external_exports.number().int().positive(), line_start: external_exports.number().int().positive(), line_end: external_exports.number().int().positive(), quote: external_exports.string().min(1).max(2e3) }).strict();
 var RelationSchema = external_exports.object({ target_id: external_exports.string().min(1), kind: external_exports.enum(["covers_topic", "uses_experience", "related_to", "version_of"]), origin: external_exports.enum(["agent", "manual"]).default("agent"), evidence: external_exports.array(EvidenceSchema).min(1) }).strict();
@@ -27082,15 +27082,15 @@ function parse3(schema, input2) {
 // src/tools/schemas.ts
 var none = external_exports.object({}).strict();
 var p = external_exports.object({ preview_id: UUID }).strict();
-var optionalRead = external_exports.object({ record_id: UUID.optional(), summary_id: UUID.optional(), topic_id: TopicId.optional(), revision: external_exports.number().int().positive().optional(), view: external_exports.enum(["raw", "summary", "topic", "extracted"]), line_start: external_exports.number().int().positive().optional(), line_end: external_exports.number().int().positive().optional(), max_chars: external_exports.number().int().min(1).max(8e3).optional(), cursor: external_exports.string().max(2e3).optional() }).strict();
+var optionalRead = external_exports.object({ record_id: UUID.optional(), summary_id: UUID.optional(), topic_id: TopicId.optional(), inbox_path: external_exports.string().min(1).max(1e3).optional(), revision: external_exports.number().int().positive().optional(), view: external_exports.enum(["raw", "summary", "topic", "extracted"]), line_start: external_exports.number().int().positive().optional(), line_end: external_exports.number().int().positive().optional(), max_chars: external_exports.number().int().min(1).max(8e3).optional(), cursor: external_exports.string().max(2e3).optional() }).strict();
 var schemas = {
   kg_status: none,
   kg_setup_preview: ConfigSchema,
   kg_setup_commit: p,
-  kg_capture_preview: external_exports.object({ source_path: external_exports.string().optional(), text: external_exports.string().max(50 * 1024 * 1024).optional(), extracted_text: external_exports.string().min(1).max(50 * 1024 * 1024).optional(), title: external_exports.string().min(1).max(200), type: RecordType, policy: Policy.optional(), record_id: UUID.optional(), document_status: external_exports.enum(["draft", "final", "submitted"]).optional(), occurred_on: external_exports.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional() }).strict().refine((v) => v.source_path !== void 0 !== (v.text !== void 0), "Exactly one source_path or text"),
+  kg_capture_preview: external_exports.object({ source_path: external_exports.string().min(1).optional(), inbox_path: external_exports.string().min(1).max(1e3).optional(), modified_revision: external_exports.number().int().positive().optional(), text: external_exports.string().max(50 * 1024 * 1024).optional(), extracted_text: external_exports.string().min(1).max(50 * 1024 * 1024).optional(), title: external_exports.string().min(1).max(200), type: RecordType, policy: Policy.optional(), record_id: UUID.optional(), document_status: external_exports.enum(["draft", "final", "submitted"]).optional(), occurred_on: external_exports.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional() }).strict().refine((v) => [v.source_path, v.text, v.inbox_path, v.modified_revision].filter((x) => x !== void 0).length === 1, "Exactly one source_path, text, inbox_path or modified_revision").refine((v) => v.modified_revision === void 0 || v.record_id !== void 0, "modified_revision requires record_id"),
   kg_capture_commit: p,
   kg_inbox_list: external_exports.object({ cursor: external_exports.string().optional(), limit: external_exports.number().int().min(1).max(10).optional() }).strict(),
-  kg_read: optionalRead.refine((v) => [v.record_id, v.summary_id, v.topic_id].filter(Boolean).length === 1, "Exactly one ID"),
+  kg_read: optionalRead.refine((v) => [v.record_id, v.summary_id, v.topic_id, v.inbox_path].filter(Boolean).length === 1, "Exactly one ID or inbox_path").refine((v) => !v.inbox_path || v.view === "raw", "inbox_path only supports raw view"),
   kg_search: external_exports.object({ terms: external_exports.array(external_exports.string().min(2).max(200)).min(1).max(10), record_types: external_exports.array(RecordType).optional(), document_status: external_exports.enum(["draft", "final", "submitted"]).optional(), date_from: external_exports.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(), date_to: external_exports.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(), versions: external_exports.enum(["latest", "all"]).optional(), limit: external_exports.number().int().min(1).max(10).optional(), cursor: external_exports.string().max(2e3).optional(), fallback: external_exports.enum(["none", "raw_text"]).optional() }).strict(),
   kg_neighbors: external_exports.object({ seed_ids: external_exports.array(external_exports.string().min(1)).min(1).max(5), hops: external_exports.number().int().min(1).max(2).optional(), max_nodes: external_exports.number().int().min(1).max(20).optional() }).strict(),
   kg_organize_preview: external_exports.object({ drafts: external_exports.array(SummaryDraftSchema).min(1).max(10), topic_definitions: external_exports.array(external_exports.object({ id: TopicId, key: external_exports.string().regex(/^[a-z0-9][a-z0-9-]{0,79}$/), title: external_exports.string().min(1).max(100), aliases: external_exports.array(external_exports.string().min(1).max(100)).max(30) }).strict()).max(30).optional() }).strict(),
@@ -27273,9 +27273,9 @@ async function withRecoveryLock(root, action) {
   const lock = await resolveInside(root, ".kg-runtime/writer.lock");
   let claimed = false;
   try {
-    let owner;
+    let owner2;
     try {
-      owner = JSON.parse(await (0, import_promises4.readFile)(await resolveInside(root, ".kg-runtime/writer.lock/owner.json"), "utf8"));
+      owner2 = JSON.parse(await (0, import_promises4.readFile)(await resolveInside(root, ".kg-runtime/writer.lock/owner.json"), "utf8"));
     } catch (e) {
       if (e.code !== "ENOENT") fail("VAULT_BUSY");
       try {
@@ -27285,10 +27285,10 @@ async function withRecoveryLock(root, action) {
         if (error62.code !== "ENOENT") throw error62;
       }
     }
-    if (owner) {
-      if (!Number.isSafeInteger(owner.pid) || owner.pid <= 0 || typeof owner.instance !== "string") fail("VAULT_BUSY");
+    if (owner2) {
+      if (!Number.isSafeInteger(owner2.pid) || owner2.pid <= 0 || typeof owner2.instance !== "string") fail("VAULT_BUSY");
       try {
-        process.kill(owner.pid, 0);
+        process.kill(owner2.pid, 0);
         fail("VAULT_BUSY");
       } catch (e) {
         if (e.code !== "ESRCH") fail("VAULT_BUSY");
@@ -27512,13 +27512,14 @@ async function loadCatalog(root) {
   return { records: a.records, topics: b.topics, edges: c.edges, fingerprint: m.fingerprint };
 }
 async function coverage(root, rows) {
-  let stale = 0, unsearchable = 0;
+  let stale = 0, unsearchable = 0, modified = 0;
   for (const r of rows) {
     const current = await hashAt(root, r.raw_path);
+    if (current !== null && current !== r.source_sha256) modified++;
     if (r.summary_path && current !== r.source_sha256) stale++;
     if (r.extraction === "unsupported" || r.extraction === "provided" && (current !== r.source_sha256 || !r.extracted_path || await hashAt(root, r.extracted_path) !== r.extracted_sha256)) unsearchable++;
   }
-  return { inbox_count: rows.filter((r) => r.state === "inbox").length, unsearchable_count: unsearchable, stale_summary_count: stale };
+  return { inbox_count: rows.filter((r) => r.state === "inbox").length, unsearchable_count: unsearchable, stale_summary_count: stale, modified_source_count: modified };
 }
 
 // src/catalog/search.ts
@@ -27845,6 +27846,39 @@ async function validateReferences(root) {
   return { errors, record_count: all.length };
 }
 
+// package.json
+var package_default = {
+  name: "obsidian-knowledge-graph",
+  version: "0.2.0",
+  private: true,
+  type: "module",
+  engines: {
+    node: ">=24 <25"
+  },
+  scripts: {
+    test: "vitest run",
+    typecheck: "tsc --noEmit",
+    build: "node scripts/build.mjs",
+    "check:package": "node scripts/check-package.mjs",
+    package: "node scripts/package.mjs",
+    eval: "node dist/cli.cjs eval"
+  },
+  dependencies: {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    yaml: "^2.9.1",
+    zod: "^4.6.5"
+  },
+  devDependencies: {
+    "@types/node": "^26.6.5",
+    esbuild: "^0.28.2",
+    typescript: "^7.0.2",
+    vitest: "^5.0.3"
+  }
+};
+
+// src/version.ts
+var VERSION = package_default.version;
+
 // src/sync/git.ts
 var exec = (0, import_node_util.promisify)(import_node_child_process.execFile);
 async function run(root, ...args) {
@@ -27883,10 +27917,10 @@ async function auditOutgoing(root, remoteSha, head, transport) {
   const commits = (await transport.run(root, "rev-list", remoteSha ? remoteSha + ".." + head : head)).split(/\r?\n/).filter(Boolean);
   const known = (await list(root)).filter((o) => o.result?.commit && o.result.committed_files);
   for (const commit of commits) {
-    const owner = known.find((o) => o.result.commit === commit);
-    if (!owner) fail("GIT_UNOWNED_COMMITS");
+    const owner2 = known.find((o) => o.result.commit === commit);
+    if (!owner2) fail("GIT_UNOWNED_COMMITS");
     const paths = (await transport.run(root, "diff-tree", "--root", "--no-commit-id", "--name-only", "-r", "-z", commit)).split("\0").filter(Boolean);
-    if (paths.some((p2) => !allowedPath(p2) || !owner.result.committed_files.some((f) => f.path === p2))) fail("GIT_UNOWNED_COMMITS");
+    if (paths.some((p2) => !allowedPath(p2) || !owner2.result.committed_files.some((f) => f.path === p2))) fail("GIT_UNOWNED_COMMITS");
   }
 }
 async function syncPreview(root, id, destinations) {
@@ -27899,7 +27933,7 @@ async function syncPreview(root, id, destinations) {
   }
   const plan = { preview_id: (0, import_node_crypto6.randomUUID)(), operation_id: id, destinations: [...new Set(destinations)], expires_at: Date.now() + 6e5, files };
   await writeAtomic(root, ".kg-runtime/sync-previews/" + plan.preview_id + ".json", json2(plan));
-  return { preview_id: plan.preview_id, operation_id: id, destinations: plan.destinations, changed_paths: files.map((f) => f.path), warnings: ["Git synchronization includes prior completed, unsynchronized registrations required by the shared catalog.", "Notion is not supported by version 0.1.2."] };
+  return { preview_id: plan.preview_id, operation_id: id, destinations: plan.destinations, changed_paths: files.map((f) => f.path), warnings: ["Git synchronization includes prior completed, unsynchronized registrations required by the shared catalog.", `Notion is not supported by version ${VERSION}.`] };
 }
 async function pushOperation(config2, op, transport = gitTransport) {
   if (!op.result) fail("INVALID_INPUT");
@@ -27966,10 +28000,10 @@ async function pushOperation(config2, op, transport = gitTransport) {
       }
       const existing = [];
       for (const p2 of paths) {
-        if (await hashAt(root, p2) !== null || await transport.run(root, "ls-files", "--", p2)) existing.push(p2);
+        if (await hashAt(root, p2) !== null || await transport.run(root, "ls-files", "--", ":(literal)" + p2)) existing.push(p2);
       }
       if (!existing.length) fail("INVALID_INPUT");
-      await transport.run(root, "add", "--", ...existing);
+      await transport.run(root, "add", "--", ...existing.map((p2) => ":(literal)" + p2));
       const staged = (await transport.run(root, "diff", "--cached", "--name-only", "-z")).split("\0").filter(Boolean);
       if (staged.some((p2) => !paths.includes(p2))) fail("POLICY_BLOCKED");
       if (staged.length) await transport.run(root, "commit", "-m", "knowledge: " + op.kind + " " + op.operation_id);
@@ -28210,6 +28244,99 @@ async function migrateReadable(root) {
   return prepare(root, "organize", changes, summaries.map((s) => String(note(s.text).meta.record_id)));
 }
 
+// src/inbox/files.ts
+var import_promises10 = require("node:fs/promises");
+var import_node_path9 = __toESM(require("node:path"), 1);
+var import_node_child_process2 = require("node:child_process");
+var import_node_util2 = require("node:util");
+var exec2 = (0, import_node_util2.promisify)(import_node_child_process2.execFile);
+var pathKey = (p2) => process.platform === "win32" ? p2.replace(/\\/g, "/").toLowerCase() : p2;
+var samePath = (a, b) => pathKey(a) === pathKey(b);
+async function inboxPath(root, relative, allowMissing = false) {
+  const p2 = relative.replace(/\\/g, "/");
+  if (!p2.startsWith("00_Inbox/") || p2.split("/").some((x) => !x || x.startsWith("."))) fail("OUTSIDE_ROOT");
+  const target = await resolveInside(root, p2);
+  const parts = p2.split("/");
+  for (let i = 1; i <= parts.length; i++) {
+    try {
+      if ((await (0, import_promises10.lstat)(await resolveInside(root, parts.slice(0, i).join("/")))).isSymbolicLink()) fail("OUTSIDE_ROOT");
+    } catch (e) {
+      if (allowMissing && e.code === "ENOENT") return p2;
+      throw e;
+    }
+  }
+  if (!(await (0, import_promises10.lstat)(target)).isFile()) fail("INVALID_INPUT", "Inbox source must be a regular file");
+  return import_node_path9.default.relative(await (0, import_promises10.realpath)(root), await (0, import_promises10.realpath)(target)).split(import_node_path9.default.sep).join("/");
+}
+function owner(all, p2) {
+  const exact = all.flatMap((r) => r.versions.filter((v) => samePath(v.raw_path, p2)).map((v) => ({ r, v })));
+  const origins = all.flatMap((r) => r.versions.filter((v) => v.inbox_origin && samePath(v.inbox_origin, p2)).map((v) => ({ r, v })));
+  const matches = exact.length ? exact : origins;
+  if (new Set(matches.map((x) => x.r.record_id)).size > 1) fail("HASH_CONFLICT", "Multiple records claim this Inbox path");
+  const found = matches.sort((a, b) => b.v.revision - a.v.revision)[0];
+  if (found) allowed(found.r);
+  return found;
+}
+async function scanInbox(root, all, checkHashes = true) {
+  all ??= await records(root);
+  const items = [];
+  let registered = 0, modified = 0;
+  const claimed = new Set(all.flatMap((r) => r.versions.map((v) => pathKey(v.raw_path))));
+  const excluded = new Set(all.filter((r) => r.policy.agent_access === "excluded").flatMap((r) => r.versions.flatMap((v) => [v.raw_path, ...v.inbox_origin ? [v.inbox_origin] : []]).map(pathKey)));
+  for (const r of all.filter((r2) => r2.policy.agent_access === "allowed")) for (const v of r.versions) {
+    const current = checkHashes ? await hashAt(root, v.raw_path) : v.sha256;
+    const changed = current !== null && current !== v.sha256;
+    if (v.state === "inbox") registered++;
+    if (changed) modified++;
+    if (v.state === "inbox" || changed) items.push({ record_id: r.record_id, revision: v.revision, title: r.title, record_type: r.record_type, extraction: v.extraction, raw_path: v.raw_path, ...v.state === "inbox" ? { inbox_path: v.raw_path } : {}, status: current === null ? "missing" : changed ? "modified" : "registered", source_sha256: current });
+  }
+  let visited = 0;
+  async function walk(dir, depth) {
+    if (depth > 32) fail("INBOX_TOO_LARGE", "Inbox nesting exceeds 32 levels");
+    const absolute = await resolveInside(root, dir);
+    try {
+      if ((await (0, import_promises10.lstat)(absolute)).isSymbolicLink()) return;
+    } catch (e) {
+      if (e.code === "ENOENT") return;
+      throw e;
+    }
+    for (const entry of (await (0, import_promises10.readdir)(absolute, { withFileTypes: true })).sort((a, b) => a.name.localeCompare(b.name))) {
+      if (++visited > 1e4) fail("INBOX_TOO_LARGE", "Inbox exceeds 10000 entries");
+      if (entry.name.startsWith(".") || entry.isSymbolicLink()) continue;
+      const p2 = dir + "/" + entry.name;
+      if (entry.isDirectory()) await walk(p2, depth + 1);
+      else if (entry.isFile() && !claimed.has(pathKey(p2)) && !excluded.has(pathKey(p2))) items.push({ status: "unregistered", title: import_node_path9.default.parse(entry.name).name, inbox_path: p2, extraction: /\.(md|txt)$/i.test(p2) ? "text" : "unsupported" });
+    }
+  }
+  await walk("00_Inbox", 0);
+  items.sort((a, b) => (a.inbox_path ?? a.raw_path ?? "").localeCompare(b.inbox_path ?? b.raw_path ?? "") || (a.revision ?? 0) - (b.revision ?? 0));
+  const unregistered = items.filter((i) => i.status === "unregistered").length;
+  return { items, inbox_count: registered + unregistered, registered_inbox_count: registered, unregistered_inbox_count: unregistered, modified_source_count: modified };
+}
+async function originalBytes(root, v) {
+  const current = await hashAt(root, v.raw_path);
+  if (current === v.sha256) return bytes(root, v.raw_path);
+  for (const op of (await list(root)).filter((o) => o.state === "local_committed")) {
+    for (const ch of op.changes) if (ch.content && (ch.path.startsWith("00_Inbox/") || ch.path.startsWith("10_Raw/"))) {
+      const b = Buffer.from(ch.content, "base64");
+      if (sha256(b) === v.sha256) return b;
+    }
+  }
+  try {
+    const args = ["-c", "safe.directory=" + root];
+    const { stdout } = await exec2("git", [...args, "log", "--all", "-n", "100", "--format=%H", "--", ":(literal)" + v.raw_path], { cwd: root, maxBuffer: 1024 * 1024, timeout: 1e4, windowsHide: true });
+    for (const commit of stdout.trim().split(/\r?\n/).filter((c) => /^[a-f0-9]{40,64}$/.test(c))) {
+      try {
+        const { stdout: b } = await exec2("git", [...args, "show", commit + ":" + v.raw_path], { cwd: root, encoding: "buffer", maxBuffer: 50 * 1024 * 1024, timeout: 1e4, windowsHide: true });
+        if (sha256(b) === v.sha256) return b;
+      } catch {
+      }
+    }
+  } catch {
+  }
+  return fail("ORIGINAL_UNAVAILABLE", "No original with the recorded SHA-256 in local receipts or the last 100 Git path commits");
+}
+
 // src/tools/handlers.ts
 var guides = {
   ".obsidian/graph.json": json2(defaultGraph),
@@ -28225,7 +28352,7 @@ var guides = {
 var KnowledgeService = class {
   constructor(configPath) {
     this.configPath = configPath;
-    if (!import_node_path9.default.isAbsolute(configPath)) fail("INVALID_INPUT", "Absolute config path required");
+    if (!import_node_path10.default.isAbsolute(configPath)) fail("INVALID_INPUT", "Absolute config path required");
   }
   configPath;
   async invoke(name, input2 = {}) {
@@ -28236,32 +28363,33 @@ var KnowledgeService = class {
       try {
         c2 = await loadConfig(this.configPath);
       } catch (e) {
-        if (e.code === "CONFIG_REQUIRED") return { configured: false, version: "0.1.2", notion_supported: false };
+        if (e.code === "CONFIG_REQUIRED") return { configured: false, version: VERSION, notion_supported: false };
         throw e;
       }
       const all = await records(c2.vault_path);
       const ops = await list(c2.vault_path);
-      return { configured: true, version: "0.1.2", vault_path: c2.vault_path, git_enabled: c2.git.enabled, notion_supported: false, inbox_count: all.filter((r) => r.policy.agent_access === "allowed").flatMap((r) => r.versions).filter((v) => v.state === "inbox").length, incomplete_operations: ops.filter((o) => o.state !== "local_committed").map((o) => ({ operation_id: o.operation_id, state: o.state, kind: o.kind })), pending_sync: ops.filter((o) => o.result && ["pending", "failed", "uncertain"].includes(o.result.github_state)).map((o) => ({ operation_id: o.operation_id, github_state: o.result.github_state })) };
+      const { items, ...counts } = await scanInbox(c2.vault_path, all);
+      return { configured: true, version: VERSION, vault_path: c2.vault_path, git_enabled: c2.git.enabled, notion_supported: false, ...counts, incomplete_operations: ops.filter((o) => o.state !== "local_committed").map((o) => ({ operation_id: o.operation_id, state: o.state, kind: o.kind })), pending_sync: ops.filter((o) => o.result && ["pending", "failed", "uncertain"].includes(o.result.github_state)).map((o) => ({ operation_id: o.operation_id, github_state: o.result.github_state })) };
     }
     if (name === "kg_setup_preview") {
       const c2 = await validateConfig(args, this.configPath);
       const id = (0, import_node_crypto7.randomUUID)();
-      const dir = import_node_path9.default.dirname(this.configPath);
-      await (0, import_promises10.mkdir)(dir, { recursive: true });
-      const p2 = { preview_id: id, config: c2, expires: Date.now() + 6e5, expected: await hashAt(dir, import_node_path9.default.basename(this.configPath)) };
+      const dir = import_node_path10.default.dirname(this.configPath);
+      await (0, import_promises11.mkdir)(dir, { recursive: true });
+      const p2 = { preview_id: id, config: c2, expires: Date.now() + 6e5, expected: await hashAt(dir, import_node_path10.default.basename(this.configPath)) };
       await writeAtomic(dir, ".setup-previews/" + id + ".json", json2(p2));
       return { preview_id: id, config: c2, warnings: c2.git.enabled ? ["Git remote visibility is checked before each synchronization"] : [], changed_paths: [this.configPath], notion_supported: false };
     }
     if (name === "kg_setup_commit") {
-      const dir = import_node_path9.default.dirname(this.configPath);
+      const dir = import_node_path10.default.dirname(this.configPath);
       const p2 = JSON.parse((await bytes(dir, ".setup-previews/" + args.preview_id + ".json")).toString());
       if (p2.expires < Date.now()) fail("INVALID_INPUT", "Preview expired");
       const c2 = await validateConfig(p2.config, this.configPath);
       await withVaultLock(c2.vault_path, async () => {
-        for (const folder of ["00_Inbox", "10_Raw", "20_Summaries", "30_Topics", "40_Collections", "80_Extracted", "90_Records", "99_System/catalog"]) await (0, import_promises10.mkdir)(await resolveInside(c2.vault_path, folder), { recursive: true });
+        for (const folder of ["00_Inbox", "10_Raw", "20_Summaries", "30_Topics", "40_Collections", "80_Extracted", "90_Records", "99_System/catalog"]) await (0, import_promises11.mkdir)(await resolveInside(c2.vault_path, folder), { recursive: true });
         for (const [file2, content] of Object.entries(guides)) if (await hashAt(c2.vault_path, file2) === null) await writeAtomic(c2.vault_path, file2, content, null);
         await rebuild(c2.vault_path);
-        await writeAtomic(dir, import_node_path9.default.basename(this.configPath), json2(c2), p2.expected);
+        await writeAtomic(dir, import_node_path10.default.basename(this.configPath), json2(c2), p2.expected);
       });
       return { configured: true, vault_path: c2.vault_path, git_enabled: c2.git.enabled, notion_supported: false };
     }
@@ -28269,40 +28397,73 @@ var KnowledgeService = class {
     const root = c.vault_path;
     if (name === "kg_capture_preview") return withVaultLock(root, async () => {
       const source = args.source_path ? await inputPath(c.allowed_input_roots, args.source_path) : void 0;
-      const raw = source ? await readBounded(import_node_path9.default.dirname(source), import_node_path9.default.basename(source)) : Buffer.from(args.text, "utf8");
-      if (raw.length > 50 * 1024 * 1024) fail("INVALID_INPUT", "Max source size is 50 MiB");
-      const id = args.record_id ?? (0, import_node_crypto7.randomUUID)();
+      const direct = args.inbox_path ? await inboxPath(root, args.inbox_path) : void 0;
+      const existing = await records(root);
+      const found = direct ? owner(existing, direct) : void 0;
+      if (found && args.record_id && args.record_id !== found.r.record_id) fail("HASH_CONFLICT", "Inbox file belongs to another record");
+      const id = found?.r.record_id ?? args.record_id ?? (0, import_node_crypto7.randomUUID)();
       let r;
-      if (args.record_id) {
-        r = await record2(root, id);
+      if (found || args.record_id) {
+        r = found?.r ?? await record2(root, id);
         allowed(r);
         if (args.policy && json2(args.policy) !== json2(r.policy)) fail("POLICY_BLOCKED", "Revision cannot silently change record policy");
       } else r = { schema_version: 1, record_id: id, title: args.title, record_type: args.type, document_status: args.document_status ?? "final", occurred_on: args.occurred_on, captured_at: (/* @__PURE__ */ new Date()).toISOString(), latest_revision: 0, policy: args.policy ?? { agent_access: "allowed", github: true, notion: false }, versions: [] };
-      if (r.policy.notion) fail("CONFIG_REQUIRED", "Notion is available in a future 0.2 adapter");
+      const edited = args.modified_revision !== void 0 ? version2(r, args.modified_revision) : found?.v;
+      const raw = source ? await readBounded(import_node_path10.default.dirname(source), import_node_path10.default.basename(source)) : direct ? await readBounded(root, direct) : edited ? await readBounded(root, edited.raw_path) : Buffer.from(args.text, "utf8");
+      if (raw.length > 50 * 1024 * 1024) fail("INVALID_INPUT", "Max source size is 50 MiB");
+      if (r.policy.notion) fail("CONFIG_REQUIRED", "Notion adapter is not available in this release");
+      const matchesMetadata = (v) => (args.document_status === void 0 || args.document_status === (v.document_status ?? r.document_status)) && (args.occurred_on === void 0 || args.occurred_on === (v.occurred_on ?? r.occurred_on)) && (args.extracted_text === void 0 || sha256(args.extracted_text) === v.extracted_sha256);
+      if (edited && sha256(raw) === edited.sha256) {
+        const latest = version2(r);
+        const sameOrigin = direct && samePath(direct, edited.raw_path) && latest.inbox_origin && samePath(latest.inbox_origin, direct);
+        const sameParent = args.modified_revision !== void 0 && latest.parent_revision === edited.revision;
+        if ((sameOrigin || sameParent) && latest.sha256 === sha256(raw) && matchesMetadata(latest)) {
+          if (await hashAt(root, latest.raw_path) !== latest.sha256) fail("HASH_CONFLICT");
+          return { already_registered: true, record_id: id, revision: latest.revision, action: "already_registered", changed_paths: [], source_sha256: sha256(raw) };
+        }
+      }
+      const metadataChanged = edited && !matchesMetadata(edited);
+      if (edited && sha256(raw) === edited.sha256 && !metadataChanged) {
+        if (direct && !samePath(direct, edited.raw_path)) {
+          if (await hashAt(root, edited.raw_path) !== edited.sha256) fail("HASH_CONFLICT");
+          const op2 = await prepare(root, "capture", [await change(root, direct, null, sha256(raw)), await change(root, edited.raw_path, raw, edited.sha256)], [id]);
+          op2.inbox_sources = [direct];
+          await save(root, op2);
+          return { ...preview(op2), record_id: id, revision: edited.revision, action: "remove_duplicate", source_sha256: sha256(raw) };
+        }
+        return { already_registered: true, record_id: id, revision: edited.revision, action: "already_registered", changed_paths: [], source_sha256: sha256(raw) };
+      }
+      const restore = edited && (!direct || samePath(direct, edited.raw_path)) ? await originalBytes(root, edited) : void 0;
       const revision = r.latest_revision + 1;
-      const original = source ? import_node_path9.default.basename(source) : args.title + ".md";
+      const original = source ? import_node_path10.default.basename(source) : direct ? import_node_path10.default.posix.basename(direct) : edited ? edited.original_name : args.title + ".md";
       const safe = original.replace(/[<>:"/\\|?*\x00-\x1f\[\]#]/g, "_").replace(/[. ]+$/, "").slice(0, 160) || "source.md";
       if (/^(con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)/i.test(safe)) fail("INVALID_INPUT", "Reserved filename");
-      const rawPath = `00_Inbox/${id}/r${String(revision).padStart(3, "0")}/${safe}`;
+      const rawPath = direct && !restore ? direct : `00_Inbox/${id}/r${String(revision).padStart(3, "0")}/${safe}`;
       r.latest_revision = revision;
       r.title = args.title;
       r.document_status = args.document_status ?? r.document_status;
       const extractedPath = args.extracted_text ? `80_Extracted/${id}/r${String(revision).padStart(3, "0")}/content.md` : void 0;
-      r.versions.push({ revision, raw_path: rawPath, original_name: original, document_status: r.document_status, occurred_on: args.occurred_on ?? r.occurred_on, sha256: sha256(raw), byte_length: raw.length, extraction: extractedPath ? "provided" : textBytes(raw, original) === null ? "unsupported" : "text", state: "inbox", extracted_path: extractedPath, extracted_sha256: args.extracted_text ? sha256(args.extracted_text) : void 0, extractor: extractedPath ? "user-provided/1" : void 0 });
-      const all = (await records(root)).filter((x) => x.record_id !== id);
+      r.versions.push({ revision, raw_path: rawPath, inbox_origin: direct ?? edited?.inbox_origin, parent_revision: edited?.revision, original_name: original, document_status: r.document_status, occurred_on: args.occurred_on ?? r.occurred_on, sha256: sha256(raw), byte_length: raw.length, extraction: extractedPath ? "provided" : textBytes(raw, original) === null ? "unsupported" : "text", state: "inbox", extracted_path: extractedPath, extracted_sha256: args.extracted_text ? sha256(args.extracted_text) : void 0, extractor: extractedPath ? "user-provided/1" : void 0 });
+      const all = existing.filter((x) => x.record_id !== id);
       all.push(r);
       const outputs = /* @__PURE__ */ new Map([[rawPath, raw], ["90_Records/" + id + ".json", json2(r)]]);
+      if (restore) outputs.set(edited.raw_path, restore);
       if (extractedPath) outputs.set(extractedPath, args.extracted_text);
       const snapshot = await buildCatalog(root, all);
       for (const [p2, text] of catalogFiles(snapshot)) outputs.set(p2, text);
       const changes = [];
-      for (const [p2, text] of outputs) changes.push(await change(root, p2, text));
+      for (const [p2, text] of outputs) changes.push(await change(root, p2, text, p2 === rawPath ? direct && !restore ? sha256(raw) : null : restore && p2 === edited.raw_path ? sha256(raw) : void 0));
       const op = await prepare(root, "capture", changes, [id], source ? { path: source, sha256: sha256(raw) } : void 0);
-      return { ...preview(op), record_id: id, revision, policy: r.policy, source_sha256: sha256(raw) };
+      if (direct || restore && edited.raw_path.startsWith("00_Inbox/")) {
+        op.inbox_sources = [direct ?? edited.raw_path];
+        await save(root, op);
+      }
+      return { ...preview(op), record_id: id, revision, policy: r.policy, source_sha256: sha256(raw), action: restore ? "preserve_modified_revision" : direct ? "register_in_place" : "capture", restored_revision: restore ? edited.revision : void 0 };
     });
     if (name === "kg_capture_commit" || name === "kg_organize_commit") return withVaultLock(root, async () => {
       const op = await get(root, args.preview_id);
       if (op.kind !== (name === "kg_capture_commit" ? "capture" : "organize")) fail("INVALID_INPUT");
+      if (!op.result) for (const p2 of op.inbox_sources ?? []) await inboxPath(root, p2, true);
       if (op.source) await inputPath(c.allowed_input_roots, op.source.path);
       const r = await apply(root, op);
       if (c.git.enabled && r.github_state === "not_requested") {
@@ -28312,14 +28473,29 @@ var KnowledgeService = class {
       return r;
     });
     if (name === "kg_inbox_list") {
-      const items = (await records(root)).filter((r) => r.policy.agent_access === "allowed").flatMap((r) => r.versions.filter((v) => v.state === "inbox").map((v) => ({ record_id: r.record_id, revision: v.revision, title: r.title, record_type: r.record_type, extraction: v.extraction })));
-      const offset = args.cursor ? Number(args.cursor) : 0;
+      const { items, ...counts } = await scanInbox(root);
+      const fingerprint = sha256(json2(items));
+      let offset = 0;
+      if (args.cursor) {
+        try {
+          const token = JSON.parse(Buffer.from(args.cursor, "base64url").toString());
+          if (token.fingerprint !== fingerprint) fail("HASH_CONFLICT", "Inbox changed; restart pagination");
+          offset = token.offset;
+        } catch (e) {
+          if (e.code === "HASH_CONFLICT") throw e;
+          fail("INVALID_INPUT", "Invalid Inbox cursor");
+        }
+      }
       if (!Number.isSafeInteger(offset) || offset < 0) fail("INVALID_INPUT");
       const end = offset + (args.limit ?? 10);
-      return { items: items.slice(offset, end), has_more: end < items.length, next_cursor: end < items.length ? String(end) : null };
+      return { ...counts, items: items.slice(offset, end), has_more: end < items.length, next_cursor: end < items.length ? Buffer.from(json2({ fingerprint, offset: end })).toString("base64url") : null };
     }
     if (name === "kg_read") return this.read(c, args);
-    if (name === "kg_search") return search(root, await this.snapshot(c), args);
+    if (name === "kg_search") {
+      const result = await search(root, await this.snapshot(c), args);
+      const { unregistered_inbox_count } = await scanInbox(root, void 0, false);
+      return { ...result, coverage: { ...result.coverage, unregistered_inbox_count }, warnings: unregistered_inbox_count ? ["Unregistered Inbox files are not searched. List and register them before concluding there are no matching materials."] : [] };
+    }
     if (name === "kg_neighbors") return neighbors(await this.snapshot(c), args.seed_ids, args.hops, args.max_nodes);
     if (name === "kg_organize_preview") return withVaultLock(root, async () => preview(await organize(root, args.drafts, args.topic_definitions)));
     if (name === "kg_rebuild_catalog") return withVaultLock(root, async () => {
@@ -28334,6 +28510,7 @@ var KnowledgeService = class {
       }
       return withRecoveryLock(root, async () => {
         const op = await get(root, args.operation_id);
+        if (!op.result) for (const p2 of op.inbox_sources ?? []) await inboxPath(root, p2, true);
         if (op.source) await inputPath(c.allowed_input_roots, op.source.path);
         return apply(root, op, true);
       });
@@ -28363,6 +28540,15 @@ var KnowledgeService = class {
     let p2;
     let r;
     let sourceHash;
+    if (a.inbox_path) {
+      const p3 = await inboxPath(root, a.inbox_path);
+      const found = owner(await records(root), p3);
+      if (found && samePath(found.v.raw_path, p3)) return this.read(c, { ...a, inbox_path: void 0, record_id: found.r.record_id, revision: found.v.revision });
+      const b2 = await readBounded(root, p3);
+      const text2 = textBytes(b2, p3);
+      if (text2 === null) fail("UNSUPPORTED_MEDIA");
+      return { ...this.page(text2, a, "inbox:" + p3), path: p3, source_sha256: sha256(b2), registered: false };
+    }
     if (a.topic_id) {
       if (a.view !== "topic") fail("INVALID_INPUT");
       const s = await this.snapshot(c);
@@ -28417,23 +28603,23 @@ var KnowledgeService = class {
 };
 
 // src/config/location.ts
-var import_node_path10 = __toESM(require("node:path"), 1);
+var import_node_path11 = __toESM(require("node:path"), 1);
 var import_node_fs = require("node:fs");
 function selectConfig(argv, env, home) {
   const i = argv.indexOf("--config");
   let selected = i >= 0 ? argv[i + 1] : env.KG_CONFIG_PATH;
   if (i >= 0 && !selected) fail("INVALID_INPUT");
   if (!selected) {
-    const base = import_node_path10.default.join(home, ".config", "obsidian-knowledge-graph");
+    const base = import_node_path11.default.join(home, ".config", "obsidian-knowledge-graph");
     try {
-      const loc = JSON.parse((0, import_node_fs.readFileSync)(import_node_path10.default.join(base, "location.json"), "utf8"));
+      const loc = JSON.parse((0, import_node_fs.readFileSync)(import_node_path11.default.join(base, "location.json"), "utf8"));
       selected = loc.config_path;
     } catch (e) {
       if (e.code !== "ENOENT") throw e;
     }
-    if (!selected) selected = import_node_path10.default.join(base, "config.json");
+    if (!selected) selected = import_node_path11.default.join(base, "config.json");
   }
-  if (typeof selected !== "string" || !import_node_path10.default.isAbsolute(selected)) fail("INVALID_INPUT", "Absolute config path required");
+  if (typeof selected !== "string" || !import_node_path11.default.isAbsolute(selected)) fail("INVALID_INPUT", "Absolute config path required");
   return selected;
 }
 
@@ -28464,7 +28650,7 @@ async function main() {
   if (command === "eval") {
     const dataset = opt("--dataset");
     if (!dataset) throw new Error("--dataset required");
-    const data = JSON.parse(await (0, import_promises11.readFile)(dataset, "utf8"));
+    const data = JSON.parse(await (0, import_promises12.readFile)(dataset, "utf8"));
     const report = [];
     for (const q of data.questions) {
       const r = await service.invoke("kg_search", q.input);
@@ -28475,8 +28661,8 @@ async function main() {
     const result = { total: report.length, passed: report.filter((r) => r.passed).length, results: report };
     const out = opt("--output");
     if (out) {
-      await import("node:fs/promises").then((m) => m.mkdir(import_node_path11.default.dirname(out), { recursive: true }));
-      await (0, import_promises11.writeFile)(out, JSON.stringify(result, null, 2));
+      await import("node:fs/promises").then((m) => m.mkdir(import_node_path12.default.dirname(out), { recursive: true }));
+      await (0, import_promises12.writeFile)(out, JSON.stringify(result, null, 2));
     }
     console.log(JSON.stringify(result));
     if (result.passed !== result.total) process.exitCode = 1;
@@ -28486,7 +28672,7 @@ async function main() {
   const tool = command === "catalog" && args[1] === "rebuild" ? "kg_rebuild_catalog" : names[command];
   if (!tool) throw new Error("Use status, validate, search --input, read --input, catalog rebuild, invoke TOOL --input, or eval");
   const input2 = opt("--input");
-  console.log(JSON.stringify(await service.invoke(tool, input2 ? JSON.parse(await (0, import_promises11.readFile)(input2, "utf8")) : {})));
+  console.log(JSON.stringify(await service.invoke(tool, input2 ? JSON.parse(await (0, import_promises12.readFile)(input2, "utf8")) : {})));
 }
 main().catch((e) => {
   process.stderr.write(JSON.stringify({ error: { code: e.code ?? "INVALID_INPUT" } }) + "\n");

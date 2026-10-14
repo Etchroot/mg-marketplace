@@ -1,5 +1,5 @@
 {
-  "name": "obsidian-knowledge-graph", "version": "0.1.2",
+  "name": "obsidian-knowledge-graph", "version": "0.2.0",
   "description": "개인 자료 등록·Inbox 정리·요약·주제 연결·검색·Git 동기화",
   "author": {"name": "myeonggeun"}, "skills": "./skills/", "mcpServers": "./.mcp.json",
   "interface": {"displayName": "Obsidian Knowledge Graph", "shortDescription": "개인 자료 등록·요약·연결·검색"}

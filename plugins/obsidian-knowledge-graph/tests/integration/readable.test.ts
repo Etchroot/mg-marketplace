@@ -26,7 +26,8 @@ test('successful organization removes empty Inbox folders without removing uncla
     const foreign=path.join(h.vault,path.dirname(old),'메모.txt');await writeFile(foreign,'보존');
     const later=await h.invoke('kg_capture_preview',{text:'다음 revision',title:'둘째 경험',type:'essay',record_id:bid});await h.invoke('kg_capture_commit',{preview_id:later.preview_id});
     await h.organize(bid,{revision:1,facts:[{text:'둘째 문서',evidence:[{record_id:bid,revision:1,line_start:1,line_end:1,quote:'둘째 문서'}]}]});
-    expect(await readFile(foreign,'utf8')).toBe('보존');expect((await h.invoke('kg_inbox_list')).items).toHaveLength(1);
+    expect(await readFile(foreign,'utf8')).toBe('보존');const inbox=await h.invoke('kg_inbox_list');
+    expect(inbox.items.filter((i:any)=>i.status==='registered')).toHaveLength(1);expect(inbox.items.filter((i:any)=>i.status==='unregistered')).toHaveLength(1);
     expect(await readdir(path.join(h.vault,'00_Inbox',bid))).toEqual(['r001','r002']);
   }finally{await h.dispose();}
 });

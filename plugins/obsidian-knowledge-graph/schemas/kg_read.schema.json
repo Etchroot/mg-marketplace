@@ -16,6 +16,11 @@
       "type": "string",
       "pattern": "^topic-[a-z0-9][a-z0-9-]{0,79}$"
     },
+    "inbox_path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
     "revision": {
       "type": "integer",
       "exclusiveMinimum": 0,
