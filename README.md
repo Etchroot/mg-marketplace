@@ -21,7 +21,7 @@ music-director는 장르·보컬·언어·곡 구조를 곡별로 선택합니�
 codex plugin marketplace add Etchroot/mg-marketplace
 ```
 
-지원되는 앱의 플러그인 목록에서 MG Marketplace를 선택해 music-director를 설치합니다. 등록 명령 지원 여부와 설치 화면은 사용하는 호스트 버전에 따라 확인해야 합니다.
+지원되는 앱의 플러그인 목록에서 MG Marketplace를 선택해 설치합니다. 등록 명령 지원 여부와 설치 화면은 사용하는 호스트 버전에 따라 확인해야 합니다.
 
 로컬 저장소로 사용할 경우 이 저장소를 프로젝트로 열고 앱을 재시작한 뒤 플러그인 목록을 확인할 수 있습니다. 카탈로그는 `.agents/plugins/marketplace.json`입니다.
 
