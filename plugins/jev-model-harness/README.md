@@ -88,6 +88,8 @@ npm test
 node bench/measure.mjs holdout
 ```
 
-버전을 올릴 때는 `plugin.json`, `.claude-plugin/plugin.json`, `.codex-plugin/plugin.json`, `package.json`을 함께 바꿉니다.
-테스트가 네 파일의 이름과 버전이 같은지 확인합니다.
-마켓플레이스 루트 README의 버전 표도 함께 바꿉니다.
+실행 파일(`hooks/`, `scripts/`, `agents/`, `codex/`, 매니페스트)을 바꿨다면 `npm run bump`로 버전을 올립니다.
+- 매니페스트 3개, `package.json`, 마켓플레이스 README의 버전 표, `release.json`이 한 번에 바뀝니다.
+- 버전을 올리지 않으면 `npm test`가 실패하며 안내합니다.
+
+자세한 작업 규칙은 [AGENTS.md](AGENTS.md)에 있습니다. 에이전트는 이 파일을 자동으로 읽습니다.
