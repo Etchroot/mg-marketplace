@@ -6,7 +6,7 @@
 
 | 이름 | 버전 | 한 줄 설명 | 형태 |
 | --- | --- | --- | --- |
-| [music-director](plugins/music-director/README.md) | 0.2.1 | 레퍼런스 분석·곡 기획·가사 수정·Suno 프롬프트·작품 정리 | 스킬 |
+| [music-director](plugins/music-director/README.md) | 0.3.0 | 레퍼런스 분석·곡 기획·가사 수정·Suno 프롬프트·작품 정리 | 스킬 |
 | [application-coach](plugins/application-coach/README.md) | 0.1.1 | 실제 채용 문항 제안·경험 인터뷰·자소서 답변과 경험 기록 저장 | 스킬 |
 | [obsidian-knowledge-graph](plugins/obsidian-knowledge-graph/README.md) | 0.2.0 | Obsidian Vault 기반 개인 지식베이스: 자료 등록·Inbox 정리·근거 요약·주제 연결·검색·Git 동기화 | 스킬 + MCP |
 | [jev-model-harness](plugins/jev-model-harness/README.md) | 0.2.1 | 요청마다 Jev로 판단해 넘길 가치가 있는 작업만 더 싼 모델의 서브에이전트에 위임 | 훅 + 서브에이전트 |

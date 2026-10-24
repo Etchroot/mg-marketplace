@@ -15,6 +15,7 @@ Suno에 접속하거나 API·브라우저로 생성, 결제, 계정 연결, 샘�
 필요할 때만 읽을 자료:
 - 레퍼런스 입력: [references/reference-analysis.md](references/reference-analysis.md)
 - 신규 기획과 설정 선택: [references/options.md](references/options.md)
+- K-pop 가사 작성과 반주에 맞춘 프레이징: [references/kpop-lyrics.md](references/kpop-lyrics.md). K-pop 작업일 때만 읽고 다른 장르에 기본 적용하지 않는다.
 - 생성 결과 피드백과 반복 수정: [references/session-lessons.md](references/session-lessons.md)
 - 글자 수 확인: [scripts/check_prompts.py](scripts/check_prompts.py)
 
