@@ -1,6 +1,6 @@
 {
   "name": "jev-model-harness",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Jev로 요청마다 성격을 판단해서, 메인(gpt-6.1-sol)이 넘길 가치가 있는 작업만 Luna 서브에이전트에 위임하도록 안내합니다.",
   "author": {
     "name": "myeonggeun"

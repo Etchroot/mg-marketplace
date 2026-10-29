@@ -3,9 +3,12 @@
 
 const SELF_CONTAINED =
   'It cannot see this conversation, so give it a self-contained task: the goal, relevant file paths, and constraints.';
+// R10: 맥락이 필요한 요청도 올려 보내므로, 메인이 대화에서 필요한 내용을 옮겨 적게 한다
+const CARRY_CONTEXT =
+  'This request needs a stronger model than you: include the decisions and context from this conversation that it needs.';
 const RELAY = 'Relay its result concisely. Handle the request yourself only if delegating is clearly unsuitable.';
 
-export function buildInstruction({ platform = 'claude-code', target, reuse, manual }) {
+export function buildInstruction({ platform = 'claude-code', target, reuse, manual, escalate }) {
   if (target === 'main') return null;
   const forced = manual ? ' (the user forced this route)' : '';
 
@@ -21,8 +24,11 @@ export function buildInstruction({ platform = 'claude-code', target, reuse, manu
       ? `A ${agent} agent from earlier in this session may still have a warm cache: if you have its agent ID, continue it with SendMessage instead of starting a new one.`
       : `Start it with the Agent tool (subagent_type: "${agent}").`,
     SELF_CONTAINED,
+    escalate && CARRY_CONTEXT,
     RELAY,
-  ].join(' ');
+  ]
+    .filter(Boolean)
+    .join(' ');
 }
 
 export function modeNote(mode) {

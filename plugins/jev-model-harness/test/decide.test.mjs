@@ -66,3 +66,29 @@ test('R6: 캐시 수명 안이면 재사용', () => {
   assert.equal(shouldReuse(now - 3_000_000, now, 3600), true);
   assert.equal(shouldReuse(undefined, now, 3600), false);
 });
+
+test('R5: 메인보다 낮은 단계만 내려보낸다', () => {
+  // Sonnet 메인(1): 조회는 haiku로, 구현은 메인이
+  assert.equal(decide(answers({ score: 0 }), 1).tier, 'light');
+  assert.equal(decide(answers({ score: 1 }), 1).tier, 'main');
+  // Haiku 메인(0): 조회도 메인이
+  assert.equal(decide(answers({ score: 0 }), 0).tier, 'main');
+});
+
+test('R10: 메인보다 높은 단계는 맥락·분량과 상관없이 올린다', () => {
+  assert.deepEqual(decide(answers({ s: 0.1, b: 0.1, score: 2 }), 0), { tier: 'high', rule: 'R10', level: 2 });
+  assert.deepEqual(decide(answers({ s: 0.1, b: 0.1, score: 1 }), 0), { tier: 'mid', rule: 'R10', level: 1 });
+  assert.equal(decide(answers({ s: 0.1, score: 2 }), 1).tier, 'high');
+  // 신뢰도가 낮으면 올리지 않는다
+  assert.equal(decide(answers({ s: 0.1, score: 2, conf: 0.49 }), 0).rule, 'R2');
+  // Opus 메인(기본값)에서는 걸리지 않는다
+  assert.equal(decide(answers({ s: 0.1, score: 2 })).rule, 'R2');
+});
+
+test('R7: 수동 지정 단계가 메인과 같으면 메인, 다르면 워커', () => {
+  assert.equal(decideManual('opus', 0).tier, 'high');
+  assert.equal(decideManual('opus', 2).tier, 'main');
+  assert.equal(decideManual('sonnet', 1).tier, 'main');
+  assert.equal(decideManual('haiku', 1).tier, 'light');
+  assert.equal(decideManual('auto', 0).tier, 'main');
+});

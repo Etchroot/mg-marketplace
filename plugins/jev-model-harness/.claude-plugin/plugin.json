@@ -1,7 +1,7 @@
 {
   "name": "jev-model-harness",
-  "version": "0.2.1",
-  "description": "Jev로 요청마다 성격을 판단해서, 메인(Opus)이 넘길 가치가 있는 작업만 Haiku/Sonnet 서브에이전트에 위임하도록 안내합니다.",
+  "version": "0.3.0",
+  "description": "Jev로 요청마다 성격을 판단해서, 넘길 가치가 있는 작업은 더 싼 서브에이전트로 내리고, 메인보다 어려운 작업은 더 강한 서브에이전트로 올리도록 안내합니다. 메인 모델은 무엇이든 됩니다.",
   "author": {
     "name": "myeonggeun"
   },

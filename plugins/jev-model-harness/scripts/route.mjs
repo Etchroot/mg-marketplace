@@ -2,7 +2,7 @@
 // UserPromptSubmit 훅: Jev로 요청을 판단해서 메인 모델에게 위임 지시를 넣는다. (SPEC 3장, 11장)
 // Claude Code와 Codex에서 같은 스크립트를 쓴다. 플랫폼별 차이는 lib/platforms.mjs 에 있다.
 // 어떤 오류가 나도 입력을 막지 않는다(R9). 출력이 없으면 메인이 그대로 처리한다.
-import { decide, decideManual, parseManual, stripManual, shouldReuse } from './lib/decide.mjs';
+import { decide, decideManual, parseManual, stripManual, shouldReuse, TOP_LEVEL } from './lib/decide.mjs';
 import { askJev, buildRequest } from './lib/jev.mjs';
 import { readTranscriptInfo } from './lib/transcript.mjs';
 import { loadState, saveState, appendLog } from './lib/store.mjs';
@@ -49,7 +49,10 @@ async function main() {
   // Codex는 입력에 현재 모델이 있고, Claude Code는 대화 기록에서 읽는다 (첫 입력 때는 아직 없음)
   const mainModel = input.model ?? transcript.model;
   log.main_model = mainModel ?? null;
-  if (mainModel && !platform.mainModel.pattern.test(mainModel) && !state.warnedModel) {
+  // 메인 모델의 단계. 모르면(첫 입력 등) 최고 단계로 보고 올리지 않는다
+  const mainLevel = (mainModel ? platform.modelLevel(mainModel) : null) ?? TOP_LEVEL;
+  log.main_level = mainLevel;
+  if (mainModel && platform.mainModel && !platform.mainModel.pattern.test(mainModel) && !state.warnedModel) {
     notes.push(mainModelWarning(mainModel, platform.mainModel.name));
     state.warnedModel = true;
   }
@@ -65,7 +68,7 @@ async function main() {
   if (!request || request.startsWith('/')) {
     decision = { tier: 'main', rule: 'skip' };
   } else if (state.mode !== 'auto') {
-    decision = decideManual(state.mode);
+    decision = decideManual(state.mode, mainLevel);
   } else {
     const apiKey = process.env.CLAUDE_PLUGIN_OPTION_TYPESAFE_API_KEY || process.env.TYPESAFE_API_KEY;
     if (!apiKey) {
@@ -76,7 +79,7 @@ async function main() {
         const body = buildRequest(request, transcript.lastAssistantText, platform.environment);
         const res = await askJev(body, { apiKey });
         log.jev = { model: res.model, ms: Date.now() - t0, usage: res.usage, answers: res.answers };
-        decision = decide(res.answers);
+        decision = decide(res.answers, mainLevel);
       } catch (e) {
         log.jev = { ms: Date.now() - t0 };
         decision = { tier: 'main', rule: 'R9', error: String(e?.message ?? e) };
@@ -96,6 +99,7 @@ async function main() {
     target: decision.target,
     reuse,
     manual: decision.rule === 'R7',
+    escalate: decision.rule === 'R10',
   });
   const context = [...notes, instruction].filter(Boolean).join('\n');
   if (context) {

@@ -1,26 +1,36 @@
 # jev-model-harness (Jev Model Classification Harness)
 
 Claude Code 플러그인 (Codex도 지원). 사용자 입력마다 [Jev](https://docs.typesafe.ai)로 요청의 성격을 판단해서,
-메인(Opus)이 **넘길 가치가 있는 작업만** Haiku / Sonnet 서브에이전트에 위임하도록 안내합니다.
+메인 모델이 **넘길 가치가 있는 작업만** 더 싼 서브에이전트에 내려보내고,
+메인보다 높은 수준이 필요한 작업은 더 강한 서브에이전트로 올려 보내도록 안내합니다.
+메인 모델은 Haiku / Sonnet / Opus 중 무엇이든 됩니다.
 설계와 근거는 [SPEC.md](SPEC.md)에 있습니다.
 
 ## 동작
 
+요청 단계(level)와 메인 모델 단계(Haiku 0 / Sonnet 1 / Opus 2)를 비교합니다.
+
 ```
 입력 → [UserPromptSubmit 훅] Jev 1회 호출 (standalone / bulk / level)
-     → 맥락 필요하거나, 분량이 작거나, 애매하면  → 메인(Opus)이 처리 (아무것도 주입하지 않음)
-     → 그 외 level 0 → jev-model-harness:haiku-worker
+     → level이 메인보다 높고 확실하면 → 올림 (맥락이 필요해도)
              level 1 → jev-model-harness:sonnet-worker
-             level 2 → 메인(Opus)
+             level 2 → jev-model-harness:opus-worker
+     → 맥락 필요하거나, 분량이 작거나, 애매하면  → 메인이 처리 (아무것도 주입하지 않음)
+     → level이 메인보다 낮으면 → 내림
+             level 0 → jev-model-harness:haiku-worker
+             level 1 → jev-model-harness:sonnet-worker
+     → level이 메인과 같으면 → 메인이 처리
 ```
 
+- 메인이 Opus면 올릴 일이 없으므로 예전(v0.2)과 똑같이 동작합니다.
+- 세션의 첫 입력은 대화 기록에 모델 정보가 아직 없어서 메인을 Opus로 보고 판단합니다.
 - 위임 지시는 **권고**입니다. 메인 모델이 따르지 않을 수 있습니다.
 - Jev 오류, 키 없음, 시간 초과일 때는 조용히 메인이 처리합니다. 입력은 막히지 않습니다.
 
 ## 준비
 
 - Node.js 20 이상 (외부 패키지 없음)
-- 메인 모델을 Opus로 설정: `/model opus`
+- 메인 모델은 아무거나 괜찮습니다. 비용을 아끼려면 `/model sonnet`, 품질을 우선하려면 `/model opus`
 - Jev API 키 (console.typesafe.ai/keys)
 
 ## 설치 (Claude Code)
@@ -57,9 +67,9 @@ Codex에서는 메인을 `gpt-6.1-sol`로 두고, 조회·읽기 작업만 `luna
 
 | 입력 | 동작 |
 |---|---|
-| `!opus` / `!sol` | 이 세션은 항상 메인이 처리 |
-| `!sonnet` | 이 세션은 항상 sonnet-worker에 위임 (Codex에서는 메인이 처리) |
-| `!haiku` / `!luna` | 이 세션은 항상 가장 작은 워커에 위임 |
+| `!opus` / `!sol` | 이 세션은 항상 Opus 단계로 처리. 메인이 Opus면 메인이, 아니면 opus-worker가 처리 |
+| `!sonnet` | 이 세션은 항상 Sonnet 단계로 처리. 메인이 Sonnet이면 메인이, 아니면 sonnet-worker가 처리 (Codex에서는 메인이 처리) |
+| `!haiku` / `!luna` | 이 세션은 항상 가장 작은 단계로 처리. 메인이 Haiku면 메인이, 아니면 가장 작은 워커가 처리 |
 | `!auto` | 자동 판단으로 복귀 |
 
 명령 뒤에 요청을 이어 쓸 수 있습니다. 예: `!opus 이 구조 다시 설계해줘`

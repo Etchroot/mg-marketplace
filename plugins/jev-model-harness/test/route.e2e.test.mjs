@@ -154,12 +154,48 @@ test('Codex: 조회는 luna_worker, 구현(mid)은 메인, 권장 모델이 아�
   assert.equal(logs[2].main_model, 'gpt-6-astra');
 });
 
-test('Claude Code: 대화 기록의 메인 모델이 Opus가 아니면 경고', async () => {
+test('Claude Code: 메인이 Opus가 아니어도 경고하지 않는다', async () => {
   const dataDir = await mkdtemp(join(tmpdir(), 'mr-'));
   const transcript = join(dataDir, 't.jsonl');
   await writeFile(transcript, JSON.stringify({ type: 'assistant', message: { model: 'claude-sonnet-5-5', content: [] } }));
   const r = await runHook({ session_id: 's6', transcript_path: transcript, prompt: '!auto' }, { CLAUDE_PLUGIN_DATA: dataDir });
-  assert.match(r.context, /main model is "claude-sonnet-5-5".*Opus/);
+  assert.doesNotMatch(r.context, /Warning/);
+});
+
+test('R10: Haiku 메인에서 설계 요청은 맥락이 필요해도 opus-worker로 올린다', async () => {
+  const dataDir = await mkdtemp(join(tmpdir(), 'mr-'));
+  const transcript = join(dataDir, 't.jsonl');
+  await writeFile(transcript, JSON.stringify({ type: 'assistant', message: { model: 'claude-haiku-5-5', content: [] } }));
+  const env = { CLAUDE_PLUGIN_DATA: dataDir, TYPESAFE_API_KEY: 'k' };
+  const payload = (prompt) => ({ session_id: 's7', transcript_path: transcript, prompt });
+
+  nextAnswers = { standalone: { noul: 0.2 }, bulk: { noul: 0.3 }, level: { score: 2, confidence: 0.9 } };
+  const up = await runHook(payload('그럼 구조를 어떻게 나눌지 정하자'), env);
+  assert.match(up.context, /jev-model-harness:opus-worker/);
+  assert.match(up.context, /context from this conversation/);
+
+  // 같은 단계(Haiku 메인 + 조회)는 메인이 처리
+  nextAnswers = delegate;
+  const same = await runHook(payload('lotto 들어간 파일 다 찾아줘'), env);
+  assert.equal(same.out, '');
+
+  // 수동 !opus 는 Haiku 메인에서 opus-worker로 간다
+  const manual = await runHook(payload('!opus 이거 설계해줘'), env);
+  assert.match(manual.context, /jev-model-harness:opus-worker.*user forced/);
+
+  const logs = (await readFile(join(dataDir, 'route-log.jsonl'), 'utf8')).trim().split('\n').map(JSON.parse);
+  assert.deepEqual(logs.map((l) => [l.main_level, l.decision.rule, l.decision.target]), [
+    [0, 'R10', 'opus-worker'],
+    [0, 'R5', 'main'],
+    [0, 'R7', 'opus-worker'],
+  ]);
+});
+
+test('메인 모델을 모르면(첫 입력) Opus로 보고 올리지 않는다', async () => {
+  const dataDir = await mkdtemp(join(tmpdir(), 'mr-'));
+  nextAnswers = { standalone: { noul: 0.2 }, bulk: { noul: 0.3 }, level: { score: 2, confidence: 0.9 } };
+  const r = await runHook({ session_id: 's8', prompt: '구조 설계하자' }, { CLAUDE_PLUGIN_DATA: dataDir, TYPESAFE_API_KEY: 'k' });
+  assert.equal(r.out, '');
 });
 
 test('CLAUDE_CODE_SUBAGENT_MODEL 경고는 세션당 한 번', async () => {

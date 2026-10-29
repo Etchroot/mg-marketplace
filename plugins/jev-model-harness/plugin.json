@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "jev-model-harness",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "사용자 입력마다 Jev로 요청의 성격을 판단해서, 메인 모델이 넘길 가치가 있는 작업만 더 싼 모델의 서브에이전트에 위임하도록 안내하는 하네스 플러그인",
   "author": {
     "name": "myeonggeun"

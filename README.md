@@ -9,7 +9,7 @@
 | [music-director](plugins/music-director/README.md) | 0.3.0 | 레퍼런스 분석·곡 기획·가사 수정·Suno 프롬프트·작품 정리 | 스킬 |
 | [application-coach](plugins/application-coach/README.md) | 0.1.1 | 실제 채용 문항 제안·경험 인터뷰·자소서 답변과 경험 기록 저장 | 스킬 |
 | [obsidian-knowledge-graph](plugins/obsidian-knowledge-graph/README.md) | 0.2.0 | Obsidian Vault 기반 개인 지식베이스: 자료 등록·Inbox 정리·근거 요약·주제 연결·검색·Git 동기화 | 스킬 + MCP |
-| [jev-model-harness](plugins/jev-model-harness/README.md) | 0.2.1 | 요청마다 Jev로 판단해 넘길 가치가 있는 작업만 더 싼 모델의 서브에이전트에 위임 | 훅 + 서브에이전트 |
+| [jev-model-harness](plugins/jev-model-harness/README.md) | 0.3.0 | 요청마다 Jev로 판단해 더 싼 서브에이전트로 내리거나, 메인보다 어려운 작업은 더 강한 서브에이전트로 올림 (메인 모델 자유) | 훅 + 서브에이전트 |
 
 자세한 사용법은 각 플러그인 README에 있습니다. 아래는 고를 때 알아두면 좋은 점입니다.
 

@@ -4,8 +4,8 @@
     "runtimeHash": "fea606009eafadf83f985850843c400ded722f1e1d8aa65180baac52c7015e8d"
   },
   "jev-model-harness": {
-    "version": "0.2.1",
-    "runtimeHash": "43cb81b190f9c544c7ee0d7576baa641f799437b1cd700bfa53bd385eb2a2c94"
+    "version": "0.3.0",
+    "runtimeHash": "9c1dc297d2652e49725a8a844169e59ef7314afe732053ce847ba2c78dfa5d19"
   },
   "music-director": {
     "version": "0.3.0",
